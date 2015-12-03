@@ -1,0 +1,244 @@
+<div class="page-sidebar navbar-collapse collapse">
+  <!-- BEGIN SIDEBAR MENU -->
+  <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+  <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+  <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+  <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+  <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+  <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+  <ul class="page-sidebar-menu page-sidebar-menu-light" data-keep-expanded="true" data-auto-scroll="true"
+      data-slide-speed="100" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+    <li class="heading">
+      <h3>EPIK</h3>
+    </li>
+    <li class="start ">
+      <a href="javascript:;">
+        <span class="title">基础</span>
+        <span class="arrow "></span>
+      </a>
+      <ul class="sub-menu">
+        <li>
+          <a href="javascript:;">
+            设计
+            <span class="arrow "></span>
+          </a>
+          <ul class="sub-menu">
+            <li>
+              <a ui-sref="main.basic.design.font">
+                字体
+              </a>
+            </li>
+            <li>
+              <a ui-sref="main.basic.design.typesetting">
+                排版
+              </a>
+            </li>
+            <li>
+              <a href="#/datatables/ajax.html">
+                色彩
+              </a>
+            </li>
+            <li>
+              <a href="#/datatables/ajax.html">
+                布局
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:;">
+            动画
+            <span class="arrow "></span>
+          </a>
+          <ul class="sub-menu">
+            <li>
+              <a href="">
+                页面切换
+              </a>
+            </li>
+            <li>
+              <a href="">
+                数据加载
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="">
+      <a href="javascript:;">
+        <span class="title">控件</span>
+        <span class="arrow "></span>
+      </a>
+      <ul class="sub-menu">
+        <li>
+          <a href="javascript:;">
+            快速上手
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            安装
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            更新日志
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            组件
+            <span class="arrow "></span>
+          </a>
+          <ul class="sub-menu">
+            <li>
+              <a href="javascript:;">
+                基本<span class="arrow "></span>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="#">
+                    Button 按钮
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Icon 图标
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Layout 布局
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:;">
+                导航<span class="arrow "></span>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="#">
+                    Router 路由
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Breadcrumb 面包屑
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Menu 导航菜单
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Pagination 分页
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Steps 步骤条
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:;">
+                表单<span class="arrow "></span>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="#">
+                    Checkbox 多选框
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Datepicker 日期选择框
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Form 表单
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    InputNumber 数字输入框
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Radio 单选框
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Select 选择器
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Timepicker 时间选择框
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Upload 文件上传
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Validation 表单校验
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#/datatables/ajax.html">
+                展示<span class="arrow "></span>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="#">
+                    Alert 警告提示
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Tree 树形控件
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Grid 列表控件
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Message 全局提示
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Timeline 时间轴
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="">
+      <a href="#">
+        <span class="title">Github</span>
+      </a>
+    </li>
+  </ul>
+  <!-- END SIDEBAR MENU -->
+</div>
