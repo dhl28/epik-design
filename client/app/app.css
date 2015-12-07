@@ -95,3 +95,42 @@ pre code {
 .help-text .font-text {
   color: #999;
 }
+
+.code-box {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin: 0px 15px 15px 0px;
+  transition: all 0.5s ease;
+}
+
+.code-box .code-box-head {
+  padding: 10px;
+}
+
+.code-box .code-box-body .panel-group {
+  margin-bottom: 0;
+}
+.code-box .code-box-body .panel-group .panel {
+  border: 0;
+}
+
+.code-box .code-box-body .code-box-code .panel-body {
+  padding: 0;
+  border: 0;
+}
+
+.code-box .code-box-body .code-box-code pre {
+  margin-bottom: 0;
+  border: 0;
+}
+
+.prettyprint.linenums ol li,
+pre.prettyprint.linenums ol li {
+  list-style: decimal;
+}
+
+.checkbox > label,
+.form-horizontal .checkbox > label {
+  padding-left: 20px;
+}

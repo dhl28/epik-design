@@ -11,33 +11,318 @@
 <div class="breadcrumb-wrap">
   <span ncy-breadcrumb-text ncy-breadcrumb-text-separator=" > "></span>
 </div>
-<h4>何时使用</h4>
-<ul>
-  <li>需要表示开关状态/两种状态之间的切换时；</li>
-  <li>和 <code>switch</code>的区别是，切换 <code>switch</code> 会直接触发状态改变，而 <code>checkbox</code> 一般用于状态标记，需要和提交操作配合。</li>
-</ul>
-<h4>代码示例</h4>
 <div class="row">
   <div class="col-md-12">
-    <label class="checkbox-inline">
-      <input type="checkbox" id="inlineCheckbox1" value="option1"> 选项1
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" id="inlineCheckbox2" value="option2"> 选项2
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" id="inlineCheckbox3" value="option3"> 选项3
-    </label>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div>
-      <pre class="prettyprint prettyprinted">
-        <code class="lang-html">
-
-        </code>
-      </pre>
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">说明</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>多选框（checkbox）用于选择列表中的一个或多个选项，而单选框（radio）用于从多个选项中只选择一个。
+                设置了 disabled 属性的单选或多选框都能被赋予合适的样式。对于和多选或单选框联合使用的 &lt;label&gt; 标签，如果也希望将悬停于上方的鼠标设置为“禁止点击”的样式，请将 .disabled
+                类赋予 .radio、.radio-inline、.checkbox、.checkbox-inline 或 &lt;fieldset&gt;。
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">基本用法</span>
+          <span class="caption-helper">标签及样式</span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                <form>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                  </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                  </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                  </label>
+                </form>
+                <form>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                      1
+                    </label>
+                  </div>
+                  <div class="checkbox disabled">
+                    <label>
+                      <input type="checkbox" value="" disabled="">
+                      2
+                    </label>
+                  </div>
+                </form>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>基本
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-htm linenums">
+&lt;form&gt;
+  &lt;label class=&quot;checkbox-inline&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox1&quot; value=&quot;option1&quot;&gt; 1
+  &lt;/label&gt;
+  &lt;label class=&quot;checkbox-inline&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox2&quot; value=&quot;option2&quot;&gt; 2
+  &lt;/label&gt;
+  &lt;label class=&quot;checkbox-inline&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox3&quot; value=&quot;option3&quot;&gt; 3
+  &lt;/label&gt;
+&lt;/form&gt;
+&lt;form&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot; value=&quot;&quot;&gt;
+      1
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;checkbox disabled&quot;&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot; value=&quot;&quot; disabled=&quot;&quot;&gt;
+      2
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">API</span>
+          <span class="caption-helper">angular封装</span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>
+                        &nbsp;<i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-htm linenums">
+&lt;input type=&quot;checkbox&quot;
+       ng-model=&quot;&quot;
+       [name=&quot;&quot;]
+       [ng-true-value=&quot;&quot;]
+       [ng-false-value=&quot;&quot;]
+       [ng-change=&quot;&quot;]&gt;</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <th>
+                  属性
+                </th>
+                <th>
+                  类型
+                </th>
+                <th>
+                  说明
+                </th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    ngModel
+                  </td>
+                  <td>
+                    string
+                  </td>
+                  <td>
+                    Assignable angular expression to data-bind to.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    name
+                    (optional)
+                  </td>
+                  <td>
+                    string
+                  </td>
+                  <td>
+                    Property name of the form under which the control is published.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    ngTrueValue
+                    (optional)
+                  </td>
+                  <td>
+                    string
+                  </td>
+                  <td>
+                    The value to which the expression should be set when selected.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    ngFalseValue
+                    (optional)
+                  </td>
+                  <td>
+                    string
+                  </td>
+                  <td>
+                    The value to which the expression should be set when not selected.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    ngChange
+                    (optional)
+                  </td>
+                  <td>
+                    string
+                  </td>
+                  <td>
+                    Angular expression to be executed when input changes due to user interaction with the input element.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+          <div class="caption">
+            <i class="icon-settings"></i>
+            <span class="caption-subject bold uppercase">例子</span>
+            <span class="caption-helper">项目中注意的地方</span>
+          </div>
+          <div class="tools">
+            <a href="" class="collapse">
+            </a>
+            <a href="" class="fullscreen">
+            </a>
+          </div>
+        </div>
+      <div class="portlet-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="code-box">
+                <div class="code-box-head">
+                  <form>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" ng-model="vm.data1" ng-true-value="1" ng-false-value="0"> 1
+                    </label>
+                    <p>
+                      vm.data1 = {{vm.data1}}
+                    </p>
+                  </form>
+                </div>
+                <div class="code-box-body">
+                  <div class="code-box-code">
+                    <accordion>
+                      <accordion-group is-open="true">
+                        <accordion-heading>
+                          &nbsp;<i class="pull-right fa fa-angle-right"
+                                 ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                        </accordion-heading>
+                        <pre class="prettyprint lang-htm linenums">
+angular.module(&#39;epikDesignApp&#39;)
+  .controller(&#39;ComCheckboxCtrl&#39;, function ($scope) {
+    $scope.vm = {
+      data1 : 0
+    };
+  });
+
+&lt;form&gt;
+  &lt;label class=&quot;checkbox-inline&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; ng-model=&quot;vm.data1&quot; ng-true-value=&quot;1&quot; ng-false-value=&quot;0&quot;&gt; 1
+  &lt;/label&gt;
+  &lt;p&gt;
+    vm.data1 = {{vm.data1}}
+  &lt;/p&gt;
+&lt;/form&gt;</pre>
+                      </accordion-group>
+                    </accordion>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>
