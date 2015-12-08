@@ -12,7 +12,7 @@
       <div class="portlet-title">
         <div class="caption">
           <i class="icon-settings"></i>
-          <span class="caption-subject bold uppercase">说明</span>
+          <span class="caption-subject bold uppercase">概述</span>
           <span class="caption-helper"></span>
         </div>
         <div class="tools">
@@ -25,12 +25,80 @@
       <div class="portlet-body">
         <div class="row">
           <div class="col-md-12">
-            <ul>
-              <li></li>
-            </ul>
+            <p>angular fullstack用于快速建立项目，并提供一些工具，用于快速创建诸如控制器，服务，路由，后端api等文件和结构，十分方便。</p>
+            <p>
+              <a ng-href="https://github.com/angular-fullstack/generator-angular-fullstack" target="_blank">https://github.com/angular-fullstack/generator-angular-fullstack</a>
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">使用</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>在开发过程中，如需要创建新的文件，可以直接使用这些命令</p>
+            <p>列举一个场景，项目现在需要开发一个票据模块，如票据登记与查看。但现在项目里还没有这块内容。可以来快速搭建这个结构。</p>
+            <ol>
+              <li>
+                首先需要一个前端路由来组织这个模块下各个页面的代码
+                那么运行yo angular-fullstack:route bill, 会生成如下一些文件。
+                <ul>
+                  <li>client/app/bill/bill.js: 路由文件，表明这是一个单独的模块，这个模块相关路由都可以通过这个文件来管理</li>
+                  <li>client/app/bill/bill.controller.js: bill.html的控制器</li>
+                  <li>client/app/bill/bill.html 模板页面</li>
+                  <li>client/app/bill/bill.css 样式</li>
+                  <li>client/app/bill/bill.controller.spec.js 单元测试文件</li>
+                </ul>
+              </li>
+              <li>添加一个列表页面, 手动新建个html，命名为billList.html</li>
+              <li>运行yo angular-fullstack:controller billList, 会创建
+                <ul>
+                  <li>client/app/bill/billList.controller.js</li>
+                  <li>client/app/bill/billList.controller.spec.js</li>
+                </ul>
+              </li>
+              <li>
+                在client/app/bill/bill.js添加这个页面的html和控制器关联到新状态，状态名为bill.list;
+                这样就可以访问这个页面了。
+              </li>
+              <li>建立一个angular服务组件名为bill, 运行yo angular-fullstack:service bill，生成如下文件
+                <ul>
+                  <li>client/app/components/bill.service.js 前端服务组件</li>
+                  <li>client/app/components/bill.service.spec.js</li>
+                </ul>
+              </li>
+              <li>建立一个node端的api, 运行yo angular-fullstack:endpoint bill, 生成如下文件
+                <ul>
+                  <li>server/api/bill/index.js 后端路由文件，就是你的方法请求的路由，你可以添加这些路由，比如get/bills. 用BillService.getBills去发送请求到这个地址。</li>
+                  <li>server/api/bill/bill.controller.js 后端控制器，get /bills,
+                    对应的处理方法写到这个里面，比如去请求javaAPI, 这是另外一个请求。index.js到bill.controller.js最好只传递基本类型，这样bill.controller.js就不需要引用req,res这些对象了</li>
+                </ul>
+              </li>
+              <li>最后BillController去注入这个服务，就可以获取数据了。</li>
+            </ol>
+            <p><b>新增加的文件不必手动添加到index.html里面，grunt会自动扫描这些文件夹，加入引用到index.html</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
