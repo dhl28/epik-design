@@ -12,20 +12,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <base href="/">
   <title>EPIK-GROUP</title>
-  <meta name="description" content="EPIK">
-  <!--<meta name="viewport" content="width=device-width" >-->
+  <meta name="description" content="EPIK GROUP">
+  <meta name="viewport" content="width=device-width" >
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(client) app/vendor.css -->
   <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
   <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
   <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-  <link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
   <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
   <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
   <link href="assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
   <link href="assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css" id="style_color"/>
   <link href="assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
+  <link href="bower_components/code-prettify/src/prettify.css" type="text/css" rel="stylesheet" />
   <!-- bower:css -->
   <!-- endbower -->
   <!-- endbuild -->
@@ -34,6 +34,7 @@
   <!-- injector:css -->
   <link rel="stylesheet" href="app/app.css">
   <link rel="stylesheet" href="app/basic/basic.css">
+  <link rel="stylesheet" href="app/component/component.css">
   <link rel="stylesheet" href="app/main/main.css">
   <link rel="stylesheet" href="components/modal/modal.css">
   <!-- endinjector -->
@@ -66,7 +67,7 @@
 <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
-
+<script src="bower_components/code-prettify/src/prettify.js?autorun=true"></script>
 <!-- build:js({.tmp,client}) app/app.js -->
 <script src="app/app.js"></script>
 <!-- injector:js -->
@@ -75,6 +76,11 @@
 <script src="app/basic/design.controller.js"></script>
 <script src="app/basic/font/font.controller.js"></script>
 <script src="app/basic/typesetting/typesetting.controller.js"></script>
+<script src="app/component/comForm/comCheckbox/comCheckbox.controller.js"></script>
+<script src="app/component/comForm/comForm.controller.js"></script>
+<script src="app/component/comWidget/comWidget.controller.js"></script>
+<script src="app/component/component.controller.js"></script>
+<script src="app/component/component.js"></script>
 <script src="app/main/main.controller.js"></script>
 <script src="app/main/main.js"></script>
 <script src="components/modal/modal.service.js"></script>
