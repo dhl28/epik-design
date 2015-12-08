@@ -12,7 +12,7 @@
       <div class="portlet-title">
         <div class="caption">
           <i class="icon-settings"></i>
-          <span class="caption-subject bold uppercase">说明</span>
+          <span class="caption-subject bold uppercase">概述</span>
           <span class="caption-helper"></span>
         </div>
         <div class="tools">
@@ -26,7 +26,10 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li></li>
+              <li>Express 是一个基于 Node.js 平台的极简、灵活的 web 应用开发框架，它提供一系列强大的特性，帮助你创建各种 Web 和移动设备应用。</li>
+              <li>丰富的 HTTP 快捷方法和任意排列组合的 Connect 中间件，让你创建健壮、友好的 API 变得既快速又简单。</li>
+              <li>Express 不对 Node.js 已有的特性进行二次抽象，我们只是在它之上扩展了 Web 应用所需的基本功能。</li>
+              <li><a ng-href="http://www.expressjs.com.cn/" target="_blank">http://www.expressjs.com.cn/</a></li>
             </ul>
           </div>
         </div>
@@ -34,3 +37,239 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">配置</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                /server/config/express.js 用于读取配置文件，设置express。
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <pre class="prettyprint lang-js linenums">
+/**
+ * Express configuration
+ */
+
+'use strict';
+
+var express = require('express');
+var favicon = require('serve-favicon');
+var morgan = require('morgan');
+var compression = require('compression');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var cookieParser = require('cookie-parser');
+var errorHandler = require('errorhandler');
+var path = require('path');
+var config = require('./environment'); // 获取环境变量，加载的是 ./environment/index.js文件
+
+module.exports = function(app) {
+  var env = app.get('env');
+
+  // 需要在应用中进行如下设置才能让 Express 渲染模板文件：
+  // views, 放模板文件的目录，view engine, 模板引擎
+  // 当需要在node端直接渲染页面的时候，会对应到这个目录和模板引擎。
+  app.set('views', config.root + '/server/views');
+  app.engine('html', require('ejs').renderFile);
+  app.set('view engine', 'html');
+
+  // 一些3方的中间件，项目级别的。 中间件是express路由中的一个插件，相当于一个前处理器，动态为请求响应增加功能。
+  app.use(compression());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+  app.use(methodOverride());
+  app.use(cookieParser());
+
+  // 读取配置文件，判断当前环境, 如public，.tmp这些目录是grunt构建项目时产生的，需要结合grunt理解。
+  // express.static 用于指定静态文件路径，静态文件是直接下载的，一般是图片，样式，字体。
+  // 生产环境是构建过后的
+  if ('production' === env) {
+    app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
+    app.use(express.static(path.join(config.root, 'public')));
+    app.set('appPath', config.root + '/public');
+    app.use(morgan('dev'));
+  }
+
+  // 开发和测试环境
+  if ('development' === env || 'test' === env) {
+    app.use(require('connect-livereload')());
+    app.use(express.static(path.join(config.root, '.tmp')));
+    app.use(express.static(path.join(config.root, 'client')));
+    app.set('appPath', 'client');
+    app.use(morgan('dev'));
+    app.use(errorHandler()); // Error handler - has to be last
+  }
+};
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                /server/config/environment/index.js node端的环境配置
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <pre class="prettyprint lang-js linenums">
+'use strict';
+
+var path = require('path');
+var _ = require('lodash');
+
+function requiredProcessEnv(name) {
+  if (!process.env[name]) {
+    throw new Error('You must set the ' + name + ' environment variable');
+  }
+  return process.env[name];
+}
+
+// All configurations will extend these options
+// ============================================
+var all = {
+  env: process.env.NODE_ENV,
+
+  // Root path of server
+  root: path.normalize(__dirname + '/../../..'),
+
+  // Server port
+  port: process.env.PORT || 9000,
+
+  // Secret for session, you will want to change this and make it an environment variable
+  secrets: {
+    session: 'epik-design-secret'
+  }
+};
+
+// Export the config object based on the NODE_ENV
+// 根据NODE_ENV去加载不同的环境配置，NODE_ENV在app.js中设置
+// ==============================================
+module.exports = _.merge(
+  all,
+  require('./' + process.env.NODE_ENV + '.js') || {});
+
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                /server/config/environment/development.js 开发环境配置，NODE_ENV = development 会加载此配置文件
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <pre class="prettyprint lang-js linenums">
+'use strict';
+
+// Development specific configuration
+// ==================================
+module.exports = {
+
+  // ldap服务器配置，当验证模式为ldap时会用到
+  ldapServer: {
+    url: 'ldap://172.30.0.141:389/',
+    bindDn: 'hanhua\\lixiaokai',
+    bindCredentials: 'p@ssw0rd',
+    searchBase: 'DC=hanhua,DC=com',
+    searchFilter: '(sAMAccountName={{username}})'
+  },
+
+  /**
+   * 文档服务器
+   */
+  cm: {
+    userName: 'Administrator',
+    password: 'p@ssw0rd',
+    path: '/epik/credit/danbao/temp',
+    url: 'http://172.30.0.34/wsi/FNCEWS40SOAP'
+  },
+
+  /**
+   * 业务服务器的地址
+   */
+  apiServerExternal: 'http://172.30.0.181:9001',
+  apiServerCommon: 'http://172.30.0.181:9000',
+  apiServerGBP: 'http://172.30.0.161:9000',
+  apiServerGBPSCC: 'http://172.30.0.161:9000',
+
+  /**
+   * 消息服务器
+   */
+  mq: {
+    host: '172.30.0.251',
+    port: 5673,
+    username: 'admin',
+    password: 'AJo2AYwv49Xb',
+    notification_gbp_exchange: 'NotificationGbpExchange_1',
+    notification_gbp_pattern: 'notification.gbp.*'
+  },
+
+  /**
+   * 单点登录服务器
+   */
+  cas: {
+    version: 'CAS3.0',
+    ssoBaseURL: 'http://172.30.0.179:9200/cas',
+    serverBaseURL: 'http://localhost:9000',
+    validateURL: '/serviceValidate'
+  },
+
+  /**
+   * 集成多套前端系统时，相互访问，需要设置此配置
+   */
+  appServer: {
+    'epikReview': {
+      host: 'http://localhost:9000',
+      bizType: 0
+    },
+    'epikSale': {
+      host: 'http://localhost:9000',
+      bizType: 1
+    },
+    'epikOld': {
+      host: 'http://172.30.0.61:9080/credit',
+      bizType: 2
+    }
+  }
+};
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>
