@@ -12,7 +12,7 @@
       <div class="portlet-title">
         <div class="caption">
           <i class="icon-settings"></i>
-          <span class="caption-subject bold uppercase">说明</span>
+          <span class="caption-subject bold uppercase">概述</span>
           <span class="caption-helper"></span>
         </div>
         <div class="tools">
@@ -25,12 +25,454 @@
       <div class="portlet-body">
         <div class="row">
           <div class="col-md-12">
-            <ul>
-              <li></li>
-            </ul>
+            <p>AngularJS是为了克服HTML在构建应用上的不足而设计的。HTML是一门很好的为静态文本展示设计的声明式语言，但要构建WEB应用的话它就显得乏力了。所以我做了一些工作（你也可以觉得是小花招）来让浏览器做我想要的事。</p>
+            <p>类库 - 类库是一些函数的集合，它能帮助你写WEB应用。起主导作用的是你的代码，由你来决定何时使用类库。类库有：jQuery等</p>
+            <p>框架 - 框架是一种特殊的、已经实现了的WEB应用，你只需要对它填充具体的业务逻辑。这里框架是起主导作用的，由它来根据具体的应用逻辑来调用你的代码。框架有：knockout、sproutcore等。</p>
+            <p>AngularJS使用了不同的方法，它尝试去补足HTML本身在构建应用方面的缺陷。AngularJS通过使用我们称为标识符(directives)的结构，让浏览器能够识别新的语法。</p>
+            <p><a ng-href="http://www.apjs.net/" target="_blank">http://www.apjs.net/</a></p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">配置</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ol>
+              <li>我们为整个项目创建了一个angular.module（比如epikModule），这是在 /client/app.js里创建的</li>
+              <li>epikModule，会依赖一些3方的模块，或者我们自己开发的模块，模块是跨项目使用的，独立的 </li>
+              <li>/client/app.js 里面做了一些angular启动时的配置，下面会引用代码。 </li>
+              <li>我们得益于angular的双向数据绑定，依赖注入等特性，表明你不用手动去给每个控件赋值，提交时在取值等，但是首先你得设计好vm，否则事情会变复杂</li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                /client/app.js app.js 提供了angular的配置，这些应该在运行前配置好，其他angular组件都可在此配置。
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <pre class="prettyprint lang-js linenums">
+'use strict';
+
+var epikApp = angular.module('epikApp', [
+  'ngCookies',
+  'ngResource',
+  'ui.router',
+  'ui.bootstrap',
+  'ncy-angular-breadcrumb',
+  'ui.select',
+  'ngSanitize',
+  'ngGrid',
+  'ngJsTree',
+  'ui.calendar',
+  'angularFileUpload',
+  'chart.js',
+  'ui.bootstrap.datetimepicker',
+  'ngBootbox',
+])
+  // 设置了一些常量。
+  .value("Config", {
+    "appName": "epikSale"
+  })
+  // 这里配置了$locationProvider，$httpProvider 这些服务，这些都是angular自带的服务，启动时可以配置，并且向全局变量epikApp暴露了一些方法。
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $controllerProvider, $provide) {
+    $locationProvider.html5Mode(true).hashPrefix('#');
+    $httpProvider.interceptors.push('authInterceptor');
+
+    epikApp.register = {
+      controllerProvider: $controllerProvider,
+      provide: $provide
+    };
+  })
+  // 这里定义了一个$http拦截器，前端在发送请求和收到响应式的身份验证方式。
+  .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $cookies, $location) {
+    return {
+      request: function (config) {
+        config.headers = config.headers || {};
+        if ($cookies.get('token')) {
+          config.headers.Authorization = 'Bearer ' + $cookies.get('token');
+          config.headers.SSO = $cookies.get('ssoToken');
+        }
+        return config;
+      },
+      responseError: function (response) {
+        if (response.status === 401) {
+          $location.path('/');
+          $cookies.remove('token');
+          return $q.reject(response);
+        } else if (response.status === 403) {
+          $location.path('/');
+          return $q.reject(response);
+        }
+        else {
+          return $q.reject(response);
+        }
+      }
+    };
+  })
+  // 这个是配置uiRouter状态变化时要处理的事情，如未验证或未授权时，本地应跳转到/下。Auth服务会保持授认证状态，它会去和服务端交互。
+  .run(function ($rootScope, $stateParams, $state, $location, Auth, $modalStack, $ngBootbox, $window, ConfigService) {
+    $rootScope.$stateParams = $stateParams;
+    $rootScope.$state = $state;
+
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+      Auth.isLoggedInAsync(function (loggedIn) {
+        if (!loggedIn) {
+          $location.path('/');
+        }
+      });
+      if (_.isArray(toState['roles'])) {
+        Auth.hasPermissionInAsync(toState['roles'], function (hasPermission) {
+          if (!hasPermission) {
+            $location.path('/');
+          }
+        });
+      }
+      $modalStack.dismissAll('back');
+    });
+
+    // 保存上一状态参数，定义退回方法
+    $rootScope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
+      $rootScope.previousStateName = fromState.name;
+      $rootScope.previousStateParams = fromParams;
+    });
+    $rootScope.previousState = function () {
+      $window.history.back();
+      //$state.go($rootScope.previousStateName, $rootScope.previousStateParams);
+    }
+
+    // 配置$ngBootbox默认设置
+    $ngBootbox.setDefaults({
+      animate: true,
+      backdrop: 'static'
+    });
+    $ngBootbox.addLocale('local', {
+      'OK': '确定',
+      'CANCEL': '取消',
+      'CONFIRM': '确认'
+    });
+    $ngBootbox.setLocale('local');
+
+    // 读取服务器配置
+    ConfigService.getAppServer().then(function (data) {
+      $rootScope.config = data;
+    });
+  })
+
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">路由</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>前端路由通过uiRouter配置和管理</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                /client/app/main/main.js
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <pre class="prettyprint lang-js linenums">
+'use strict';
+
+// angular.module('epikDesignApp'),这里是使用这个模块，也就是app中定义的，去配置路由
+// $stateProvider 是uiRouter提供的，基于状态的前端router, 你可以设置当地址栏为/时，去加载那个模板，使用哪个控制器，同时我们用了3方的面包屑工具来指定当前的访问路径。
+angular.module('epikDesignApp')
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('main', {
+        url: '/',
+        templateUrl: 'app/main/main.html',
+        controller: 'MainCtrl',
+        ncyBreadcrumb: {
+          label: '首页'
+        }
+      });
+  });
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">控制器和页面</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>通常控制器和页面一一对应，同时也推荐一个js文件，对应一个控制器，或者服务，或者指令等</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                /client/app/main/main.js
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <pre class="prettyprint lang-js linenums">
+'use strict';
+
+// 定义一个控制器，注入一些服务，控制器的作用是控制当前页面的交互逻辑，通用的功能应该封装为服务
+// 比如$ngBootbox，弹出消息的服务，customerService与后端交互的客户模块服务。
+// 比如需要查询一个客户信息，这个时候通过customerService去创建一个ajax请求，这样这个操作只需要写一次，其他控制器也能用。
+angular.module('epikApp')
+  .controller('CustDetailCtrl', function ($scope, $state, $window, $stateParams, $modal, $rootScope, $ngBootbox, customerService, projectService, breadcrumButton, custInfo, bootDialog) {
+
+    $scope.returnToList = function () {
+      $state.go('main.customer.list');
+    }
+
+    $scope.projectAccept = function () {
+      customerService.getInfoById($stateParams.customerId).then(function (data) {
+        var customerType = data.customerTypeCode;
+        if (customerType === 'CT_GE_REN_KE_HU') {
+          bootDialog.createMsg('个人客户业务受理正在开发中。。。', {
+            type: 'info',
+            title: '警告信息',
+            showCancel: false
+          });
+        } else {
+          $ngBootbox.confirm('业务受理将创建新的项目，是否进行业务受理?').then(function () {
+            projectService.getData({url: '/gbp/project/v1/bizaccept/init', customerId: $stateParams.customerId})
+              .then(function (data) {
+                if (data.projectId !== null) {
+                  $state.go('main.project.accept',{projectId:data.projectId,from:'customerDetail',customerId:$stateParams.customerId});
+                } else {
+                  bootDialog.createMsg('创建项目失败，无法进行业务受理！', {
+                    type: 'error',
+                    title: '错误信息',
+                    showCancel: false
+                  });
+                }
+              }).catch(function (data) {
+                bootDialog.createMsg(data, {
+                  type: 'error',
+                  title: '错误信息',
+                  showCancel: false
+                });
+              });
+          });
+        }
+      });
+    }
+
+    $scope.customerId = $stateParams.customerId;
+    $scope.customerData = {};
+    $scope.setCustomerData = function (key, data) {
+      $scope.customerData[key] = data;
+    }
+    $scope.getCustomerData = function (key) {
+      return $scope.customerData[key];
+    }
+    $scope.setCustomerData('custInfo', custInfo);
+
+    $scope.setActiveTab = function () {
+      if ($state.current.name === "main.customer.detail") {
+        if ($scope.customerData.custInfo.customerTypeCode === "CT_GE_REN_KE_HU") {
+          $state.go("main.customer.detail.indiInfo", {customerId: $scope.customerId})
+        } else if ($scope.customerData.custInfo.customerTypeCode === "CT_QI_YE_KE_HU") {
+          $state.go("main.customer.detail.corpInfo", {customerId: $scope.customerId})
+        }
+      }
+    }
+    $scope.setActiveTab();
+  });
+
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">服务和指令</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p> 提供通用的数据或者界面服务，组件和服务会提供一些公开的接口，可以在项目中直接使用。</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <pre class="prettyprint lang-js linenums">
+'use strict';
+
+angular.module('epikApp')
+  .factory('accessory', function ($http, $q) {
+    var _downloadFile = function(documentId, filename) {
+      var deferred = $q.defer();
+      $http({
+        method: 'GET',
+        url: '/api/accessories/download',
+        params: {
+          documentId : documentId,
+          filename: filename
+        }
+      }).success(function (data, status, headers, config) {
+        deferred.resolve(data);
+      }).error(function (err) {
+        deferred.reject(err);
+      });
+      return deferred.promise;
+    }
+
+    var _getDocumentFileList = function(documentIdList) {
+      var deferred = $q.defer();
+      $http({
+        method: 'GET',
+        url: '/api/accessories/documentfilelist',
+        params: {
+          documentIdList : documentIdList
+        }
+      }).success(function (data, status, headers, config) {
+        deferred.resolve(data);
+      }).error(function (err) {
+        deferred.reject(err);
+      });
+      return deferred.promise;
+    }
+
+    return {
+      downloadFile: _downloadFile,
+      getDocumentFileList : _getDocumentFileList
+    };
+  });
+
+'use strict';
+
+angular.module('epikApp')
+  .directive('downloadModal', function ($modal) {
+    return {
+      template: '<a class="btn borderBtn" ng-click="openDownloadModal($event);">文件查看</a>',
+      restrict: 'EA',
+      scope: {
+        documentIds : '='
+      },
+      link : function(scope, elements, attrs, controller){
+        scope.openDownloadModal = function ($event) {
+          var modalInstance = $modal.open({
+            templateUrl: '/components/uploaderModal/donwloadModal.html',
+            size: 'lg',
+            resolve: {
+              documentIds: function () {
+                return scope.documentIds;
+              }
+            },
+            controller: function($scope, $modalInstance, documentIds) {
+              $scope.documentIds = documentIds;
+              $scope.closeModal = function () {
+                $modalInstance.close();
+              }
+            }
+          });
+        }
+      }
+    };
+  });
+
+// 直接调用
+&lt;download-modal document-ids=&quot;customerData[&#39;custCredits&#39;].creditInfoVO[0].pictureIdentity&quot;&gt;&lt;/download-modal&gt;
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>
