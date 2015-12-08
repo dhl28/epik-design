@@ -1,0 +1,260 @@
+<div class="page-head">
+  <div class="page-title">
+    <h1>文件结构
+      <small></small>
+    </h1>
+  </div>
+</div>
+<div class="breadcrumb-wrap">
+  <span ncy-breadcrumb-text ncy-breadcrumb-text-separator=" > "></span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">概述</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              epik项目文件主要通过generator-angular-fullstack工具搭建，通过此工具能够快速搭建一个项目，并提供最佳实践。
+              在生成的配置选项中，使用了Grunt作为构建工具，标记语言采用HTML, 样式表采用了CSS，Angular Routers采用了ui-router,引用了css框架bootstrap。
+              并且我们手动引入了metronic库(这是一个整站的框架，提供一些样式和组件)来快速搭建项目，当然我们会覆盖重写一些样式。
+              服务器端的配置中集成了passport来提供授权认证模式策略接口，集成了socket.io, 没有集成MongoDB数据库(项目开始时未用到，以后可能会用)。
+            </p>
+
+            <p>
+              epik项目文件结构主要分为3个部分：
+            </p>
+            <ul>
+              <li>
+                client: 浏览器端运行的js代码
+                <ul>
+                  <li>app: 业务模块目录，这些都是前端独立的展示模块。
+                    <ul>
+                      <li>main: 整体框架，如header,footer,menu,content区域的划分，业务模块包含在content区域内</li>
+                      <li>customer: 客户模块
+                        <ul>
+                          <li>customerList:客户列表
+                            <ul>
+                              <li>customerList.html: 客户列表页面模板</li>
+                              <li>customerList.controller.js: 客户列表页面控制器</li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <ul>customerCreate:客户创建</ul>
+                        <ul>customerRelation:客户关系</ul>
+                      </li>
+                      <li>project-apply: 项目申请模块</li>
+                    </ul>
+                  </li>
+                  <li>assets: 静态资源文件，如样式，字体，图片等，这里直接用了metronic里的样式文件，保留的它的结构
+                    <ul>
+                      <li>admin
+                        <ul>
+                          <li>layout
+                            <ul>
+                              <li>css</li>
+                              <li>img</li>
+                              <li>scripts</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>components 包含通用的服务，指令，过滤器等。提供给如控制器之类的模块调用。组件是可复用的代码
+                    <ul>
+                      <li>customerService
+                        <ul>customer.service.js: 客户模块的前端服务，包含与node端交互的功能等</ul>
+                      </li>
+                      <li>projectApplyService</li>
+                    </ul>
+                  </li>
+                  <li>index.html: 通过此文件引用各个文件，新增加的文件无需手动增加引用(style标签或script标签), grunt会在启动过程中自动扫描，添加引用</li>
+                </ul>
+              </li>
+              <li>e2e: 端对端测试文件</li>
+              <li>server: node端运行的js代码
+                <ul>
+                  <li>api: 后端的功能模块，对应相应的业务模块，包含当前模块的路由，处理器，服务调用等代码；
+                    <ul>
+                      <li>customer
+                        <ul>
+                          <li>customer.controller.js: 控制器，处理请求响应</li>
+                          <li>customer.service.js/customer.model.js: 服务，由控制器调用，这里负责具体的数据逻辑, 这里一般会转发请求到java端</li>
+                          <li>index.js: 注册路由到对应的控制器方法。</li>
+                        </ul>
+                      </li>
+                      <li>project-apply</li>
+                    </ul>
+                  </li>
+                  <li>auth: 身份验证组件</li>
+                  <li>components: 自定义的一些组件或express中间件，处理通用逻辑。
+                    <ul>
+                      <li>error</li>
+                      <li>epik-request
+                        <ul>
+                          <li>index.js: 比如这里会为请求java端的request对象的请求头做处理，此后只需要引用此对象来发送请求</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>config: 环境配置
+                    <ul>
+                      <li>
+                        environment:各类环境变量
+                        <ul>
+                          <li>index.js: 通用配置</li>
+                          <li>development.js: 开发环境配置</li>
+                          <li>production.js:生产环境配置</li>
+                          <li>test.js: 测试环境配置</li>
+                        </ul>
+                      </li>
+                      <li>
+                        express.js: express配置
+                      </li>
+                    </ul>
+                  </li>
+                  <li>app.js: 项目启动文件</li>
+                  <li>routes.js: 整合各个模块的路由</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">如何考虑，及前后端分离</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              我们把前后端分界的那条线，从浏览器端移回到了服务器端，藉由一个由前端轻松掌控且与浏览器共通的Nodejs层.
+            </p>
+
+            <p>
+              职责划分
+            </p>
+            <ul>
+              <li>后端 (JAVA)，专注于
+                <ol>
+                  <li>服务层</li>
+                  <li>数据格式、数据稳定</li>
+                  <li>业务逻辑</li>
+                </ol>
+              </li>
+              <li>前端，专注于
+                <ol>
+                  <li>UI层</li>
+                  <li>控制逻辑、渲染逻辑</li>
+                  <li>交互、用户体验</li>
+                </ol>
+              </li>
+            </ul>
+            <p>
+              epik项目中，node端采用了express+html的技术，能够直接渲染html，处理cookies，返回JSON数据，大多数情况下，因为浏览器端采用了angular架构的单页面程序结构，
+              一般渲染逻辑由浏览器端负责，node端返回当前页面需要的JSON数据(vm), angular在浏览器端对数据做双向绑定。
+            </p>
+
+            <p>
+              node端通过http协议调用业务服务器，或者soap协议调用文档服务器，处理请求，响应，验证等逻辑。基本职能包括：
+            </p>
+            <ul>
+              <li>
+                处理授权认证--通过调用CAS，并向浏览器端返回TOKEN，作为访问的令牌。
+              </li>
+              <li>
+                建立路由，把相应的请求交给对应的控制器处理
+              </li>
+              <li>
+                在控制器中验证参数合法性
+              </li>
+              <li>
+                处理请求，通过http等协议调用后端API
+              </li>
+              <li>
+                把处理结果写回http响应。
+              </li>
+            </ul>
+            </p>
+            <p>
+              浏览器端会在初次载入页面时，加载资源文件，启动angular，此后浏览器端运行在angular环境内(刷新页面需要重新初始化)，通过前端路由，加载不同的HTML模板和前端控制器，
+              在控制器中调用服务组件与node端交互，如获取数据，提交数据等。基本职能包括：
+            </p>
+            <ul>
+              <li>前端路由，根据地址加载不同的模板和控制器</li>
+              <li>控制器控制页面的渲染逻辑</li>
+              <li>控制器调用angular服务与node端交互，通过依赖注入服务组件</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">参考</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>
+                angular-fullstatck: <a ng-href="https://github.com/angular-fullstack/generator-angular-fullstack" target="_blank">https://github.com/angular-fullstack/generator-angular-fullstack</a>
+              </li>
+              <li>
+                淘宝中途岛战役: <a ng-href="http://ued.taobao.org/blog/2014/04/full-stack-development-with-nodejs/" target="_blank">http://ued.taobao.org/blog/2014/04/full-stack-development-with-nodejs/</a>
+              </li>
+              <li>
+                Web 研发模式演变: <a ng-href="https://github.com/lifesinger/lifesinger.github.io/issues/184" target="_blank">https://github.com/lifesinger/lifesinger.github.io/issues/184</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
