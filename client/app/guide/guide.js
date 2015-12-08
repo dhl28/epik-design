@@ -43,20 +43,12 @@ angular.module('epikDesignApp')
           label: '使用 angular-fullstack'
         }
       })
-      .state('main.guide.introBootstrap', {
-        url: '/introBootstrap',
-        templateUrl: 'app/introBootstrap/introBootstrap.html',
-        controller: 'IntroBootstrapCtrl',
+      .state('main.guide.introUIRouter', {
+        url: '/introUIRouter',
+        templateUrl: 'app/introUIRouter/introUIRouter.html',
+        controller: 'IntroUIRouterCtrl',
         ncyBreadcrumb: {
-          label: '使用 bootstrap'
-        }
-      })
-      .state('main.guide.introMetronic', {
-        url: '/introMetronic',
-        templateUrl: 'app/introMetronic/introMetronic.html',
-        controller: 'IntroMetronicCtrl',
-        ncyBreadcrumb: {
-          label: '使用 Metronic'
+          label: '使用 UIRouter'
         }
       })
       .state('main.guide.introBower', {

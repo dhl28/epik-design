@@ -12,7 +12,7 @@
       <div class="portlet-title">
         <div class="caption">
           <i class="icon-settings"></i>
-          <span class="caption-subject bold uppercase">说明</span>
+          <span class="caption-subject bold uppercase">概述</span>
           <span class="caption-helper"></span>
         </div>
         <div class="tools">
@@ -26,8 +26,79 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li></li>
+              <li>节省时间。为什么要学习Bower的第一个原因，就是它会为你节省寻找客户端的依赖关系的时间。每次我需要安装jQuery的时候，我都需要去jQuery网站下载包或使用CDN版本。但是有了Bower，你只需要输入一个命令，jquery就会安装在本地计算机上，你不需要去记版本号之类的东西，你也可以通过Bower的info命令去查看任意库的信息。</li>
+              <li>脱机工作。Bower会在用户主目录下创建一个.bower的文件夹，这个文件夹会下载所有的资源、并安装一个软件包使它们可以离线使用。如果你熟悉Java，Bower即是一个类似于现在流行的Maven构建系统的.m2仓库。每次你下载任何资源库都将被安装在两个文件夹中 —— 一个在的应用程序文件夹，另一个在用户主目录下的.bower文件夹。因此，下一次你需要这个仓库时，就会用那个用户主目录下.bower中的版本。</li>
+              <li>可以很容易地展现客户端的依赖关系。你可以创建一个名为bower.json的文件，在这个文件里你可以指定所有客户端的依赖关系，任何时候你需要弄清楚你正在使用哪些库，你可以参考这个文件。</li>
+              <li>让升级变得简单。假设某个库的新版本发布了一个重要的安全修补程序，为了安装新版本，你只需要运行一个命令，bower会自动更新所有有关新版本的依赖关系。</li>
             </ul>
+            <p><a ng-href="http://bower.io/" target="_blank">http://bower.io/</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">使用</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>epik项目中，有一部分3方组件是通过bower维护的，有一部分是metronic框架提供的(需选择性引入index.html)，记录在bower.json中的组件
+              会被grunt在启动中自动添加到index.html文件中，所以请保证这个文件只包含必要的组件。</p>
+            <ul>
+              <li>安装一个3方组件 bower install jquery --save(如果只是试用下，可以先不必加 --save, 意为不把此依赖关系记录到bower.json文件中)</li>
+              <li>bower install 会安装所有bower.json中的依赖</li>
+              <li>在安装3方组件时请及时沟通是否有必要加入，或是否已经有相似的组件</li>
+              <li>尽量使用angular版本的组件</li>
+            </ul>
+            <div class="code-box">
+              <div class="code-box-head">
+                /bower.json
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <pre class="prettyprint lang-js linenums">
+{
+  "name": "epik-design",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": ">=1.2.*",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.0.1",
+    "jquery": "~1.11.0",
+    "angular-resource": ">=1.2.*",
+    "angular-cookies": ">=1.2.*",
+    "angular-sanitize": ">=1.2.*",
+    "angular-bootstrap": "~0.11.0",
+    "font-awesome": ">=4.1.0",
+    "lodash": "~2.4.1",
+    "angular-ui-router": "~0.2.10",
+    "angular-breadcrumb": "~0.4.1",
+    "code-prettify": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.2.*",
+    "angular-scenario": ">=1.2.*"
+  }
+}
+                  </pre>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
