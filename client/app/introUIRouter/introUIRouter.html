@@ -1,0 +1,178 @@
+<div class="page-head">
+  <div class="page-title">
+    <h1>使用 UIRouter
+      <small></small>
+    </h1>
+  </div>
+</div>
+<div class="breadcrumb-wrap">
+  <span ncy-breadcrumb-text ncy-breadcrumb-text-separator=" > "></span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">概述</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>AngularUI Router 是一个AngularJs路由框架，允许你通过状态组织界面的各个部分, 它与Angular ngRoute不同，前者通过URL来组织界面，而UI Router通过状态来组织。
+              状态绑定到命名的，嵌套的，或平行的Views， 允许你很好的管理程序的界面。
+            </p>
+            <p><a ng-href="http://bower.io/" target="_blank">https://github.com/angular-ui/ui-router</a></p>
+            <p><a ng-href="https://github.com/angular-ui/ui-router/wiki" target="_blank">https://github.com/angular-ui/ui-router/wiki</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">使用</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              在EPIK应用中，我们使用UIRouter来组织URL,视图，控制器。
+            </p>
+            <div class="code-box">
+              <div class="code-box-head">
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <pre class="prettyprint lang-js linenums">
+// index.html 引入angular-ui-router
+// &lt;script src=&quot;bower_components/angular-ui-router/release/angular-ui-router.js&quot;&gt;&lt;/script&gt;
+
+// app.js 添加依赖
+angular.module('epikDesignApp', [
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ui.router',
+  'ui.bootstrap',
+  'ncy-angular-breadcrumb',
+])
+
+// 菜单里面通过ui-sref去激活对应的状态
+&lt;ul class=&quot;sub-menu&quot;&gt;
+  &lt;li&gt;
+    &lt;a ui-sref=&quot;main.guide.fileStructure&quot;&gt;
+      文件结构
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a ui-sref=&quot;main.guide.introExpress&quot;&gt;
+      使用 express
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a ui-sref=&quot;main.guide.introAngular&quot;&gt;
+      使用 angular
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a ui-sref=&quot;main.guide.introAngularFullstack&quot;&gt;
+      使用 angular-fullstack
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a ui-sref=&quot;main.guide.introUIRouter&quot;&gt;
+      使用 ui-router
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a ui-sref=&quot;main.guide.introBower&quot;&gt;
+      使用 Bower
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a ui-sref=&quot;main.guide.introGrunt&quot;&gt;
+      使用 Grunt
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+// 由于angular-fullstack项目骨架是按照业务分类去组织代码的，例如客户相关的文件代码是组织到customer目录下面的, 我们遵循这个原则。
+// 这个目录下的customer.js会去定义该模块下的各个状态
+// 另一个问题是状态是可以嵌套的，所以我们为整个项目定义了一个main的状态，在/client/main/main.js里面
+// 然后通过.操作符去定义customer是main的一个子状态，例如main.customer
+// /client/main/main.js
+// 意思是说当访问路径/时，会把index.html的ui-view中的内容替换为app/main/main.html,并且用MainCtrl作为这个页面的控制器。
+// 同时如果通过ui-serf="main"，去激活这个状态也会同步地址栏中的url, 就像上面菜单栏中的那样。
+angular.module('epikDesignApp')
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('main', {
+        url: '/',
+        templateUrl: 'app/main/main.html',
+        controller: 'MainCtrl',
+        ncyBreadcrumb: {
+          label: '首页'
+        }
+      });
+  });
+// /client/customer/customer.js
+// url: '^/customer', 状态对于的url, ^表示从根路径开始,对于路径为/customer，如果不加^, 这个状态对于的url应该是/main/customer
+// main, main.customer, main.customer.list的关系是，后则是前者的子状态，例如如果有main.customer这个状态，那必须先有main这个状态。
+// 当状态激活时，template模板会自动插入到他的父状态模板中的ui-view, main没有父状态，他的父模板就是index.html，
+// 而main.customer.list激活时，他的模板会插入到main.customer的ui-view中，这样我们能在任何时刻通过改变url地址，来还原当时那个状态。
+// 有了这些技术，我们关注的是怎么去区分状态，一般是这样，index<--main<--customer<--customer.list(或<--customer.create),我们按照功能点来区分状态。
+// 如果一个功能点还有多个状态，我们可以继续细分。如customer.view中包含tab页，那一个tab就是一个customer.view的子状态。
+angular.module('epikApp')
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('main.customer', {
+        url: '^/customer',
+        templateUrl: 'app/customer/customer.html',
+        controller: 'CustomerCtrl',
+        ncyBreadcrumb: {
+          label: '客户管理'
+        }
+      })
+      .state('main.customer.list', {
+        url: '/list',
+        templateUrl: 'app/customer/list/customerList.html',
+        controller: 'CustomerListCtrl',
+        ncyBreadcrumb: {
+          label: '查询客户'
+        }
+      })
+    });
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>
