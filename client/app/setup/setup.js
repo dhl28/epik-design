@@ -24,15 +24,7 @@ angular.module('epikDesignApp')
         templateUrl: 'app/beginSetup/beginSetup.html',
         controller: 'BeginSetupCtrl',
         ncyBreadcrumb: {
-          label: '安装项目'
-        }
-      })
-      .state('main.setup.launch', {
-        url: '/beginsetup',
-        templateUrl: 'app/launch/launch.html',
-        controller: 'LaunchCtrl',
-        ncyBreadcrumb: {
-          label: '启动项目'
+          label: '安装启动项目'
         }
       })
   });

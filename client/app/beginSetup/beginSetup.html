@@ -1,6 +1,6 @@
 <div class="page-head">
   <div class="page-title">
-    <h1>安装项目<small></small></h1>
+    <h1>安装启动项目<small></small></h1>
   </div>
 </div>
 <div class="breadcrumb-wrap">
@@ -12,7 +12,7 @@
       <div class="portlet-title">
         <div class="caption">
           <i class="icon-settings"></i>
-          <span class="caption-subject bold uppercase">概述</span>
+          <span class="caption-subject bold uppercase">安装</span>
           <span class="caption-helper"></span>
         </div>
         <div class="tools">
@@ -25,7 +25,13 @@
       <div class="portlet-body">
         <div class="row">
           <div class="col-md-12">
-
+            <ol>
+              <li><b>git clone</b> 把项目clone到本地文件系统</li>
+              <li>在项目主目录下 运行 <b>npm install</b>或<b>cnpm install</b>(cnpm为npm的淘宝镜像)安装node依赖包</li>
+              <li>在项目主目录下 运行 <b>bower install</b>安装bower依赖包</li>
+              <li>在项目主目录下 运行 <b>grunt serve</b>启动项目(grunt serve会读取开发环境的配置，grunt serve:dist会读取生产环境的配置) </li>
+              <li>在浏览器中访问 http://localhost:9000 访问项目 (默认端口号为9000，配置文件里指定)</li>
+            </ol>
           </div>
         </div>
       </div>
