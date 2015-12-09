@@ -14,7 +14,8 @@
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.10",
     "angular-breadcrumb": "~0.4.1",
-    "code-prettify": "*"
+    "code-prettify": "*",
+    "checklist-model": "~0.8.0"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

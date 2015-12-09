@@ -27,9 +27,9 @@ angular.module('epikDesignApp')
           label: '表单'
         }
       })
-      .state('main.component.widget.checkbox', {
+      .state('main.component.widget.form.checkbox', {
         url: '/checkbox',
-        templateUrl: 'app/component/comForm/comCheckbox/comCheckbox.html',
+        templateUrl: 'app/component/comCheckbox/comCheckbox.html',
         controller: 'ComCheckboxCtrl',
         ncyBreadcrumb: {
           label: 'checkbox 多选框'

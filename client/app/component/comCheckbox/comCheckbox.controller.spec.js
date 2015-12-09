@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: ComFormCtrl', function () {
+describe('Controller: ComCheckboxCtrl', function () {
 
   // load the controller's module
   beforeEach(module('epikDesignApp'));
 
-  var ComFormCtrl, scope;
+  var ComCheckboxCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ComFormCtrl = $controller('ComFormCtrl', {
+    ComCheckboxCtrl = $controller('ComCheckboxCtrl', {
       $scope: scope
     });
   }));
