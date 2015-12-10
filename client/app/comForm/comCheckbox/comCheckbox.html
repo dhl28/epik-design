@@ -1,0 +1,245 @@
+<div class="page-head">
+  <!-- BEGIN PAGE TITLE -->
+  <div class="page-title">
+    <h1>checkbox 多选框
+      <small></small>
+    </h1>
+  </div>
+  <!-- END PAGE TITLE -->
+</div>
+<!-- END PAGE HEAD -->
+<div class="breadcrumb-wrap">
+  <span ncy-breadcrumb-text ncy-breadcrumb-text-separator=" > "></span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">概述</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>多选框（checkbox）用于选择列表中的一个或多个选项</li>
+              <li>&lt;input type=&quot;checkbox&quot; ng-model=&quot;...&quot;&gt; 在angular中一个checkbox对应一个ng-model</li>
+              <li>通常我们需要多个checkbox对应同一个model,用数组存储值，于是引入了checklist-model这个3方指令</li>
+              <li><a ng-href="https://github.com/vitalets/checklist-model" target="_blank">https://github.com/vitalets/checklist-model</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">实例</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                <p>1 从数据字典读取选择项，通过checklist-model绑定值</p>
+                <form action="">
+                  <label ng-repeat="cls in classifications.classOne" class="checkbox-inline">
+                    <input type="checkbox" checklist-model="vm.classOnePick" checklist-value="cls.value"> {{cls.name}}
+                  </label>
+                </form>
+                <p>
+                  vm.classOnePick : {{vm.classOnePick }}
+                </p>
+              </div>
+              <div class="code-box-head">
+                <p>2 绑定到不同的modal</p>
+                <form action="">
+                  <label>
+                    <input type="checkbox" ng-model="vm.classTwoPick.value1" ng-true-value="1" ng-false-value="0"> 选项一
+                  </label>
+                  <label>
+                    <input type="checkbox" ng-model="vm.classTwoPick.value2" ng-true-value="true" ng-false-value="false"> 选项二
+                  </label>
+                </form>
+                <p>
+                  vm.classTwoPick.value1 : {{vm.classTwoPick.value1 }}
+                </p>
+                <p>
+                  vm.classTwoPick.value2 : {{vm.classTwoPick.value2 }}
+                </p>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>代码
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-html linenums">
+&lt;div class=&quot;code-box-head&quot;&gt;
+  &lt;p&gt;1 从数据字典读取选择项，通过checklist-model绑定值&lt;/p&gt;
+  &lt;form action=&quot;&quot;&gt;
+    &lt;label ng-repeat=&quot;cls in classifications.classOne&quot; class=&quot;checkbox-inline&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; checklist-model=&quot;vm.classOnePick&quot; checklist-value=&quot;cls.value&quot;&gt; {{cls.name}}
+    &lt;/label&gt;
+  &lt;/form&gt;
+  &lt;p&gt;
+    vm.classOnePick : {{vm.classOnePick }}
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;code-box-head&quot;&gt;
+  &lt;p&gt;2 绑定到不同的modal&lt;/p&gt;
+  &lt;form action=&quot;&quot;&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot; ng-model=&quot;vm.classTwoPick.value1&quot; ng-true-value=&quot;1&quot; ng-false-value=&quot;0&quot;&gt; 选项一
+    &lt;/label&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot; ng-model=&quot;vm.classTwoPick.value2&quot; ng-true-value=&quot;true&quot; ng-false-value=&quot;false&quot;&gt; 选项二
+    &lt;/label&gt;
+  &lt;/form&gt;
+  &lt;p&gt;
+    vm.classTwoPick.value1 : {{vm.classTwoPick.value1 }}
+  &lt;/p&gt;
+  &lt;p&gt;
+    vm.classTwoPick.value2 : {{vm.classTwoPick.value2 }}
+  &lt;/p&gt;
+&lt;/div&gt;
+                      </pre>
+                      <br/>
+                      <pre class="prettyprint lang-js linenums">
+angular.module('epikDesignApp')
+  .controller('ComCheckboxCtrl', function ($scope) {
+    $scope.classifications = {
+      classOne: [{
+        id: 1,
+        name: '选项1',
+        value: 'value1'
+      }, {
+        id: 2,
+        name: '选项2',
+        value: 'value2'
+      }, {
+        id: 3,
+        name: '选项3',
+        value: 'value3'
+      }]
+    };
+
+    $scope.vm = {
+      classOnePick : ['value2'],
+      classTwoPick : {
+        value1 : 0,
+        value2 : true
+      }
+    };
+  });
+
+                      </pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">API</span>
+          <span class="caption-helper">checklist-model</span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th align="center">Attribute</th>
+                  <th align="center">Mandatory</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="center"><code>checklist-model</code></td>
+                  <td align="center">Yes</td>
+                  <td>Use instead of <code>ng-model</code></td>
+                </tr>
+                <tr>
+                  <td align="center"><code>checklist-value</code></td>
+                  <td align="center">No</td>
+                  <td>What should be picked as array item</td>
+                </tr>
+                <tr>
+                  <td align="center"><code>value</code></td>
+                  <td align="center">No</td>
+                  <td>What should be picked as item, but unlike <code>checklist-value</code>, this does not evaluate as an angular expression, but rather a static value</td>
+                </tr>
+                <tr>
+                  <td align="center"><code>ng-model</code></td>
+                  <td align="center">No</td>
+                  <td>Every checkbok will span a new scope and define a variable named <code>checked</code> to hold its state. You can modify this name by using this attribute.</td>
+                </tr>
+                <tr>
+                  <td align="center"><code>checklist-comparator</code></td>
+                  <td align="center">No</td>
+                  <td>A custom comparator. If it starts with dot(<code>.</code>) then it will be an expression applied to the array item. Otherwise it should evaluate to a function as an angular expression. The function return true if the first two arguments are equal and false otherwise.</td>
+                </tr>
+                <tr>
+                  <td align="center"><code>checklist-before-change</code></td>
+                  <td align="center">No</td>
+                  <td>An angular expression evaluated each time before the <code>checklist-model</code> has changed. If it evaluates to 'false' then the model will not change anymore.</td>
+                </tr>
+                <tr>
+                  <td align="center"><code>checklist-change</code></td>
+                  <td align="center">No</td>
+                  <td>An angular expression evaluated each time the <code>checklist-model</code> has changed.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>

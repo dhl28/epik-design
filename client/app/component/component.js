@@ -19,20 +19,4 @@ angular.module('epikDesignApp')
           label: '组件'
         }
       })
-      .state('main.component.widget.form', {
-        url: '/form',
-        templateUrl: 'app/component/comForm/comForm.html',
-        controller: 'ComFormCtrl',
-        ncyBreadcrumb: {
-          label: '表单'
-        }
-      })
-      .state('main.component.widget.form.checkbox', {
-        url: '/checkbox',
-        templateUrl: 'app/component/comCheckbox/comCheckbox.html',
-        controller: 'ComCheckboxCtrl',
-        ncyBreadcrumb: {
-          label: 'checkbox 多选框'
-        }
-      });
   });
