@@ -4,13 +4,10 @@ angular.module('epikDesignApp')
 
   .factory('apiService', function ($http, $q) {
     // Service logic
-    function _getCustomers(pageNumber, pageSize) {
+    function _getCustomers(paginationOptions) {
       var deferred = $q.defer();
       $http.get('/api/customers/paged-customers', {
-        params: {
-          pageNumber: pageNumber,
-          pageSize: pageSize
-        }
+        params: paginationOptions
       }).success(function (data, status, headers, config) {
         deferred.resolve(data);
       }).error(function (err) {

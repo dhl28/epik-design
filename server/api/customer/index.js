@@ -7,9 +7,11 @@ var express = require('express'),
 
 router.get('/paged-customers', function (req, res, next) {
   var pageNumber = req.query.pageNumber,
-    pageSize = req.query.pageSize;
+    pageSize = req.query.pageSize,
+    sort = req.query.sort,
+    order = req.query.order;
 
-  controller.getPagedCustomers(pageNumber, pageSize).then(function (body) {
+  controller.getPagedCustomers(pageNumber, pageSize, sort, order).then(function (body) {
     var result = apiHandler(body);
     if ('error' in result) {
       next(result.error);
@@ -18,9 +20,9 @@ router.get('/paged-customers', function (req, res, next) {
     }
   }).catch(function (err) {
     next({
-      code : -3,
-      name : "请求应用服务器异常",
-      message : err.message
+      code: -3,
+      name: "请求应用服务器异常",
+      message: err.message
     });
   });
 });
