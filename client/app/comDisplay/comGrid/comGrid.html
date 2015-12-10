@@ -30,10 +30,158 @@
       <div class="portlet-body">
         <div class="row">
           <div class="col-md-12">
-
+            <ul>
+              <li>在EPIK项目中，我们使用ui-grid作为表格展示工具</li>
+              <li>ui-grid是ng-grid的升级版本，现在版本为3.0(2015-12-10)</li>
+              <li>ui-grid支持分页排序，行内编辑，汇总行，树形Grid，自定义样式等功能</li>
+              <li>EPIK项目中，一般采用服务器端分页排序的交互方式</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">实例</span>
+          <span class="caption-helper">基本用法</span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                <div id="grid1" ui-grid="{ data: vm.data1 }"></div>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>代码
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-html linenums">
+&lt;div id=&quot;grid1&quot; ui-grid=&quot;{ data: vm.data1 }&quot;&gt;&lt;/div&gt;</pre>
+                      <br/>
+                      <pre class="prettyprint lang-js linenums">
+angular.module('epikDesignApp')
+  .controller('ComGridCtrl', function ($scope) {
+    $scope.vm = {};
+    $scope.vm.data1 = [
+      {
+        "firstName": "Cox",
+        "lastName": "Carney",
+        "company": "Enormo",
+        "employed": true
+      },
+      {
+        "firstName": "Lorraine",
+        "lastName": "Wise",
+        "company": "Comveyer",
+        "employed": false
+      },
+      {
+        "firstName": "Nancy",
+        "lastName": "Waters",
+        "company": "Fuelton",
+        "employed": false
+      }
+    ]
+  });</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">实例</span>
+          <span class="caption-helper">服务端请求数据，分页，排序，汇总，本地化</span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                <div id="grid2" ui-grid-pagination ui-grid="grid2Options"></div>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>代码
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-html linenums">
+&lt;div id=&quot;grid1&quot; ui-grid=&quot;{ data: vm.data1 }&quot;&gt;&lt;/div&gt;</pre>
+                      <br/>
+                      <pre class="prettyprint lang-js linenums">
+angular.module('epikDesignApp')
+  .controller('ComGridCtrl', function ($scope) {
+    $scope.vm = {};
+    $scope.vm.data1 = [
+      {
+        "firstName": "Cox",
+        "lastName": "Carney",
+        "company": "Enormo",
+        "employed": true
+      },
+      {
+        "firstName": "Lorraine",
+        "lastName": "Wise",
+        "company": "Comveyer",
+        "employed": false
+      },
+      {
+        "firstName": "Nancy",
+        "lastName": "Waters",
+        "company": "Fuelton",
+        "employed": false
+      }
+    ]
+  });</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>

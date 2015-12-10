@@ -7,7 +7,9 @@ angular.module('epikDesignApp', [
   'ui.router',
   'ui.bootstrap',
   'ncy-angular-breadcrumb',
-  'checklist-model'
+  'checklist-model',
+  'ui.grid',
+  'ui.grid.pagination'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
