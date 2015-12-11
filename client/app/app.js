@@ -14,7 +14,7 @@ angular.module('epikDesignApp', [
   'fcsa-number',
   'ui.select'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, fcsaNumberConfigProvider, uiSelectConfig) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, fcsaNumberConfigProvider, uiSelectConfig, datepickerConfig, datepickerPopupConfig) {
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
 
@@ -26,6 +26,17 @@ angular.module('epikDesignApp', [
     });
 
     uiSelectConfig.theme = 'bootstrap';
+
+    datepickerConfig.minDate = new Date(1900, 1, 1);
+    datepickerConfig.maxDate = new Date(2100, 1, 1);
+    datepickerConfig.formatData = 'dd';
+    datepickerConfig.formatMonth = 'MMM';
+    datepickerConfig.formatYear = 'yyyy';
+    datepickerConfig.formatDayHeader = 'EEE';
+    datepickerConfig.formatDayTitle = 'yyyy-MM';
+    datepickerPopupConfig.currentText = '今天';
+    datepickerPopupConfig.clearText = '清除';
+    datepickerPopupConfig.closeText = '关闭';
   })
 
   .run(["$rootScope", "settings", "$state", "i18nService", function ($rootScope, settings, $state, i18nService) {

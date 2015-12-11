@@ -34,5 +34,13 @@ angular.module('epikDesignApp')
         ncyBreadcrumb: {
           label: 'select 选择器'
         }
+      })
+      .state('main.component.widget.form.datepicker', {
+        url: '/datepicker',
+        templateUrl: 'app/comForm/comDatepicker/comDatepicker.html',
+        controller: 'ComDatepickerCtrl',
+        ncyBreadcrumb: {
+          label: 'datepicker 日期选择器'
+        }
       });
   });

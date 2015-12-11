@@ -1,0 +1,212 @@
+<div class="page-head">
+  <!-- BEGIN PAGE TITLE -->
+  <div class="page-title">
+    <h1>datepicker 日期选择框
+      <small></small>
+    </h1>
+  </div>
+  <!-- END PAGE TITLE -->
+</div>
+<!-- END PAGE HEAD -->
+<div class="breadcrumb-wrap">
+  <span ncy-breadcrumb-text ncy-breadcrumb-text-separator=" > "></span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">概述</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>日期选择框使用ui.bootstrap.datepicker</li>
+              <li>使用angular-i18n做了本地化配置</li>
+              <li>支持选择年，月，日</li>
+              <li>日期返回格式均为date类型</li>
+              <li>为兼容metronic,angular-bootstrap版本0.13.0</li>
+              <li>
+                全局配置
+                <ul>
+                  <li>datepickerConfig.minDate = new Date(1900, 1, 1);</li>
+                  <li>datepickerConfig.maxDate = new Date(2100, 1, 1);</li>
+                  <li>datepickerConfig.formatData = 'dd';</li>
+                  <li>datepickerConfig.formatMonth = 'MMM';</li>
+                  <li>datepickerConfig.formatYear = 'yyyy';</li>
+                  <li>datepickerConfig.formatDayHeader = 'EEE';</li>
+                  <li>datepickerConfig.formatDayTitle = 'yyyy-MM';</li>
+                  <li>datepickerPopupConfig.currentText = '今天';</li>
+                  <li>datepickerPopupConfig.clearText = '清除';</li>
+                  <li>datepickerPopupConfig.closeText = '关闭';</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">实例</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                <form name="form1" class="form-horizontal" novalidate>
+                  <div class="form-group" ng-class="{ 'has-error' : form1.date1.$invalid && !form1.date1.$pristine }">
+                    <label class="control-label col-md-2" for="date1">date1:</label>
+                    <div class="col-md-4">
+                      <p class="input-group">
+                        <input type="text" name="date1" id="date1" class="form-control" datepicker-popup="yyyy-MM"
+                               datepicker-options="datepickerCtrl.datePickerOptions1" ng-model="vm.date1"
+                               is-open="datepickerCtrl.date1Opened" ng-required="true" ng-disabled="true"/>
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default"
+                                    ng-click="datepickerCtrl.funOpenDate1($event)"><i
+                              class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                      </p>
+                      <p ng-show="form1.date1.$invalid && !form1.date1.$pristine" class="help-block">输入格式不正确</p>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="form-control-static">date1 : {{vm.date1}}</p>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-class="{ 'has-error' : form1.date2.$invalid && !form1.date2.$pristine }">
+                    <label class="control-label col-md-2" for="date2">date2:</label>
+                    <div class="col-md-4">
+                      <p class="input-group">
+                        <input type="text" name="date2" id="date2" class="form-control" datepicker-popup
+                               ng-model="vm.date2" is-open="datepickerCtrl.date2Opened" ng-required="true"
+                               ng-disabled="true"/>
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default"
+                                    ng-click="datepickerCtrl.funOpenDate2($event)"><i
+                              class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                      </p>
+                      <p ng-show="form1.date2.$invalid && !form1.date2.$pristine" class="help-block">输入格式不正确</p>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="form-control-static">date2 : {{vm.date2}}</p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>代码
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
+  &lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.date1.$invalid &amp;&amp; !form1.date1.$pristine }&quot;&gt;
+    &lt;label class=&quot;control-label col-md-2&quot; for=&quot;date1&quot;&gt;date1:&lt;/label&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;p class=&quot;input-group&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;date1&quot; id=&quot;date1&quot; class=&quot;form-control&quot; datepicker-popup=&quot;yyyy-MM&quot;
+               datepicker-options=&quot;datepickerCtrl.datePickerOptions1&quot; ng-model=&quot;vm.date1&quot;
+               is-open=&quot;datepickerCtrl.date1Opened&quot; ng-required=&quot;true&quot; ng-disabled=&quot;true&quot;/&gt;
+          &lt;span class=&quot;input-group-btn&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;
+                    ng-click=&quot;datepickerCtrl.funOpenDate1($event)&quot;&gt;&lt;i
+              class=&quot;glyphicon glyphicon-calendar&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p ng-show=&quot;form1.date1.$invalid &amp;&amp; !form1.date1.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;p class=&quot;form-control-static&quot;&gt;date1 : {{vm.date1}}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.date2.$invalid &amp;&amp; !form1.date2.$pristine }&quot;&gt;
+    &lt;label class=&quot;control-label col-md-2&quot; for=&quot;date2&quot;&gt;date2:&lt;/label&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;p class=&quot;input-group&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;date2&quot; id=&quot;date2&quot; class=&quot;form-control&quot; datepicker-popup
+               ng-model=&quot;vm.date2&quot; is-open=&quot;datepickerCtrl.date2Opened&quot; ng-required=&quot;true&quot;
+               ng-disabled=&quot;true&quot;/&gt;
+          &lt;span class=&quot;input-group-btn&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;
+                    ng-click=&quot;datepickerCtrl.funOpenDate2($event)&quot;&gt;&lt;i
+              class=&quot;glyphicon glyphicon-calendar&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p ng-show=&quot;form1.date2.$invalid &amp;&amp; !form1.date2.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;p class=&quot;form-control-static&quot;&gt;date2 : {{vm.date2}}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
+                      <br/>
+                      <pre class="prettyprint lang-js linenums">$scope.vm = {
+  date1 : new Date(),
+  date2 : null
+}
+
+$scope.datepickerCtrl = {
+  date1Opened : false,
+  funOpenDate1 : function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.datepickerCtrl.date1Opened = true;
+  },
+  datePickerOptions1: {
+    'datepicker-mode': "'month'",
+    'min-mode': 'month'
+  },
+  date2Opened : false,
+  funOpenDate2 : function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.datepickerCtrl.date2Opened = true;
+  }
+}</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>
