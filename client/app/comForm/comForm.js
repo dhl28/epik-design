@@ -18,5 +18,13 @@ angular.module('epikDesignApp')
         ncyBreadcrumb: {
           label: 'checkbox 多选框'
         }
+      })
+      .state('main.component.widget.form.numberinput', {
+        url: '/numberinput',
+        templateUrl: 'app/comForm/comNumberInput/comNumberInput.html',
+        controller: 'ComNumberInputCtrl',
+        ncyBreadcrumb: {
+          label: 'numberinput 数字输入框'
+        }
       });
   });

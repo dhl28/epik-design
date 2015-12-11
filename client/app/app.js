@@ -10,12 +10,19 @@ angular.module('epikDesignApp', [
   'checklist-model',
   'ui.grid',
   'ui.grid.pagination',
-  'ui.grid.selection'
+  'ui.grid.selection',
+  'fcsa-number'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, fcsaNumberConfigProvider) {
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
 
+    fcsaNumberConfigProvider.setDefaultOptions({
+      thousandsSeparator: ',',
+      decimalMark: '.',
+      maxDecimals: 2,
+      preventInvalidInput: true
+    });
   })
 
   .run(["$rootScope", "settings", "$state", "i18nService", function ($rootScope, settings, $state, i18nService) {

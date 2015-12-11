@@ -1,0 +1,132 @@
+<div class="page-head">
+  <!-- BEGIN PAGE TITLE -->
+  <div class="page-title">
+    <h1>numberinput 数字输入框
+      <small></small>
+    </h1>
+  </div>
+  <!-- END PAGE TITLE -->
+</div>
+<!-- END PAGE HEAD -->
+<div class="breadcrumb-wrap">
+  <span ncy-breadcrumb-text ncy-breadcrumb-text-separator=" > "></span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">概述</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>我们使用3方指令angular-fcsa-number来控制数字的输入与格式化</li>
+              <li>angular-fcsa-number支持输入范围控制，输入限制，前后缀，格式化等功能</li>
+            </ul>
+            <a ng-href="https://github.com/FCSAmerica/angular-fcsa-number" target="_blank">https://github.com/FCSAmerica/angular-fcsa-number</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">实例</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>max 最大值， min 最小值</li>
+              <li>maxDecimals 小数位数</li>
+              <li>preventInvalidInput 不允许输入非数字</li>
+              <li>append 后缀</li>
+              <li>prepend 前缀</li>
+              <li>maxDigits 数字个数</li>
+              <li>thousandsSeparator 千分位</li>
+              <li>decimalMark 小数点</li>
+            </ul>
+            <p>全局配置thousandsSeparator=，maxDecimals=2，preventInvalidInput: true</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                <form name="form1" class="form-horizontal" novalidate>
+                  <div class="form-group" ng-class="{ 'has-error' : form1.count1.$invalid && !form1.count1.$pristine }">
+                    <label class="control-label col-md-2" for="count1">employeeCount:</label>
+                    <div class="col-md-4">
+                      <input type='text' id="count1" name="count1" ng-model='vm.count1' class="form-control"
+                             fcsa-number="{ max: 9000, min: -5, thousandsSeparator: ',' }"/>
+                      <p ng-show="form1.count1.$invalid && !form1.count1.$pristine" class="help-block">输入格式不正确</p>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="form-control-static">vm.count1: {{vm.count1}}</p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>代码
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
+  &lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.count1.$invalid &amp;&amp; !form1.count1.$pristine }&quot;&gt;
+    &lt;label class=&quot;control-label col-md-2&quot; for=&quot;count1&quot;&gt;employeeCount:&lt;/label&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;input type=&#39;text&#39; id=&quot;count1&quot; name=&quot;count1&quot; ng-model=&#39;vm.count1&#39; class=&quot;form-control&quot;
+             fcsa-number=&quot;{ max: 9000, min: -5, maxDecimals: 2, preventInvalidInput: true, append: &#39;%&#39;, thousandsSeparator: &#39;,&#39;, decimalMark: &#39;.&#39; }&quot;/&gt;
+      &lt;p ng-show=&quot;form1.count1.$invalid &amp;&amp; !form1.count1.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;p class=&quot;form-control-static&quot;&gt;vm.count1: {{vm.count1}}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
+                      <br/>
+                      <pre class="prettyprint lang-js linenums">$scope.vm = {
+  count1 : 0
+}</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>
