@@ -42,5 +42,13 @@ angular.module('epikDesignApp')
         ncyBreadcrumb: {
           label: 'datepicker 日期选择器'
         }
+      })
+      .state('main.component.widget.form.radiobutton', {
+        url: '/radiobutton',
+        templateUrl: 'app/comForm/comRadioButton/comRadioButton.html',
+        controller: 'ComRadioButtonCtrl',
+        ncyBreadcrumb: {
+          label: 'radiobutton 单选框'
+        }
       });
   });

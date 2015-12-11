@@ -1,0 +1,136 @@
+<div class="page-head">
+  <!-- BEGIN PAGE TITLE -->
+  <div class="page-title">
+    <h1>radiobutton 单选框
+      <small></small>
+    </h1>
+  </div>
+  <!-- END PAGE TITLE -->
+</div>
+<!-- END PAGE HEAD -->
+<div class="breadcrumb-wrap">
+  <span ncy-breadcrumb-text ncy-breadcrumb-text-separator=" > "></span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">概述</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>&lt;input type=&quot;radio&quot; ng-model=&quot;string&quot; value=&quot;string&quot; [name=&quot;string&quot;] [ng-change=&quot;string&quot;] ng-value=&quot;string&quot;&gt;</li>
+              <li>如果想绑定非字符串的值，用ng-value代替value属性</li>
+            </ul>
+            <p><a ng-href="https://docs.angularjs.org/api/ng/input/input%5Bradio%5D" target="_blank">https://docs.angularjs.org/api/ng/input/input%5Bradio%5D</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">实例</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                <p>从数据字典读取选择项，绑定值</p>
+                <form class="form-horizontal" novalidate>
+                  <div class="form-group" ng-class="{ 'has-error' : form1.radio1.$invalid && !form1.radio1.$pristine }">
+                    <label class="control-label col-md-2">radio1:</label>
+                    <div class="col-md-4">
+                      <label ng-repeat="cls in classifications.classOne" class="radio-inline">
+                        <input name="radio1" type="radio" ng-model="vm.classOnePick" ng-value="{{cls.id}}" ng-required="true">{{cls.name}}
+                      </label>
+                      <p ng-show="form1.radio1.$invalid && !form1.radio1.$pristine" class="help-block">输入格式不正确</p>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="form-control-static">vm.classOnePick: {{vm.classOnePick}}</p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>代码
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-html linenums">&lt;form class=&quot;form-horizontal&quot; novalidate&gt;
+  &lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.radio1.$invalid &amp;&amp; !form1.radio1.$pristine }&quot;&gt;
+    &lt;label class=&quot;control-label col-md-2&quot;&gt;radio1:&lt;/label&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;label ng-repeat=&quot;cls in classifications.classOne&quot; class=&quot;radio-inline&quot;&gt;
+        &lt;input name=&quot;radio1&quot; type=&quot;radio&quot; ng-model=&quot;vm.classOnePick&quot; ng-value=&quot;{{cls.id}}&quot; ng-required=&quot;true&quot;&gt;{{cls.name}}
+      &lt;/label&gt;
+      &lt;p ng-show=&quot;form1.radio1.$invalid &amp;&amp; !form1.radio1.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;p class=&quot;form-control-static&quot;&gt;vm.classOnePick: {{vm.classOnePick}}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
+                      <br/>
+                      <pre class="prettyprint lang-js linenums">$scope.classifications = {
+  classOne: [{
+    id: 1,
+    name: '选项1',
+    value: 'value1'
+  }, {
+    id: 2,
+    name: '选项2',
+    value: 'value2'
+  }, {
+    id: 3,
+    name: '选项3',
+    value: 'value3'
+  }]
+};
+
+$scope.vm = {
+  classOnePick : null
+};</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>
