@@ -71,7 +71,7 @@
                     <label class="control-label col-md-2">checkbox1:</label>
                     <div class="col-md-4">
                       <label ng-repeat="cls in classifications.classOne" class="checkbox-inline">
-                        <input type="checkbox" checklist-model="vm.classOnePick" checklist-value="cls.value" ng-required="true"> {{cls.name}}
+                        <input type="checkbox" checklist-model="vm.classOnePick" checklist-value="cls.value" ng-required="!(vm.classOnePick && vm.classOnePick.length > 0)"> {{cls.name}}
                       </label>
                       <p ng-show="form1.checkbox1.$invalid && !form1.checkbox1.$pristine" class="help-block">输入格式不正确</p>
                     </div>
@@ -105,13 +105,12 @@
                         <i class="pull-right fa fa-angle-right"
                            ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
                       </accordion-heading>
-                      <pre class="prettyprint lang-html linenums">
-&&lt;form class=&quot;form-horizontal&quot; novalidate&gt;
+                      <pre class="prettyprint lang-html linenums">&lt;form class=&quot;form-horizontal&quot; novalidate&gt;
     &lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.checkbox1.$invalid &amp;&amp; !form1.checkbox1.$pristine }&quot;&gt;
       &lt;label class=&quot;control-label col-md-2&quot;&gt;checkbox1:&lt;/label&gt;
       &lt;div class=&quot;col-md-4&quot;&gt;
         &lt;label ng-repeat=&quot;cls in classifications.classOne&quot; class=&quot;checkbox-inline&quot;&gt;
-          &lt;input type=&quot;checkbox&quot; checklist-model=&quot;vm.classOnePick&quot; checklist-value=&quot;cls.value&quot; ng-required=&quot;true&quot;&gt; {{cls.name}}
+          &lt;input type=&quot;checkbox&quot; checklist-model=&quot;vm.classOnePick&quot; checklist-value=&quot;cls.value&quot; ng-required=&quot;!(vm.classOnePick &amp;&amp; vm.classOnePick.length &gt; 0)&quot;&gt; {{cls.name}}
         &lt;/label&gt;
         &lt;p ng-show=&quot;form1.checkbox1.$invalid &amp;&amp; !form1.checkbox1.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
       &lt;/div&gt;
@@ -171,77 +170,6 @@ angular.module('epikDesignApp')
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="portlet light">
-      <div class="portlet-title">
-        <div class="caption">
-          <i class="icon-settings"></i>
-          <span class="caption-subject bold uppercase">API</span>
-          <span class="caption-helper">checklist-model</span>
-        </div>
-        <div class="tools">
-          <a href="" class="collapse">
-          </a>
-          <a href="" class="fullscreen">
-          </a>
-        </div>
-      </div>
-      <div class="portlet-body">
-        <div class="row">
-          <div class="col-md-12">
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th align="center">Attribute</th>
-                  <th align="center">Mandatory</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td align="center"><code>checklist-model</code></td>
-                  <td align="center">Yes</td>
-                  <td>Use instead of <code>ng-model</code></td>
-                </tr>
-                <tr>
-                  <td align="center"><code>checklist-value</code></td>
-                  <td align="center">No</td>
-                  <td>What should be picked as array item</td>
-                </tr>
-                <tr>
-                  <td align="center"><code>value</code></td>
-                  <td align="center">No</td>
-                  <td>What should be picked as item, but unlike <code>checklist-value</code>, this does not evaluate as an angular expression, but rather a static value</td>
-                </tr>
-                <tr>
-                  <td align="center"><code>ng-model</code></td>
-                  <td align="center">No</td>
-                  <td>Every checkbok will span a new scope and define a variable named <code>checked</code> to hold its state. You can modify this name by using this attribute.</td>
-                </tr>
-                <tr>
-                  <td align="center"><code>checklist-comparator</code></td>
-                  <td align="center">No</td>
-                  <td>A custom comparator. If it starts with dot(<code>.</code>) then it will be an expression applied to the array item. Otherwise it should evaluate to a function as an angular expression. The function return true if the first two arguments are equal and false otherwise.</td>
-                </tr>
-                <tr>
-                  <td align="center"><code>checklist-before-change</code></td>
-                  <td align="center">No</td>
-                  <td>An angular expression evaluated each time before the <code>checklist-model</code> has changed. If it evaluates to 'false' then the model will not change anymore.</td>
-                </tr>
-                <tr>
-                  <td align="center"><code>checklist-change</code></td>
-                  <td align="center">No</td>
-                  <td>An angular expression evaluated each time the <code>checklist-model</code> has changed.</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>
