@@ -26,5 +26,13 @@ angular.module('epikDesignApp')
         ncyBreadcrumb: {
           label: 'numberinput 数字输入框'
         }
+      })
+      .state('main.component.widget.form.select', {
+        url: '/select',
+        templateUrl: 'app/comForm/comSelect/comSelect.html',
+        controller: 'ComSelectCtrl',
+        ncyBreadcrumb: {
+          label: 'select 选择器'
+        }
       });
   });

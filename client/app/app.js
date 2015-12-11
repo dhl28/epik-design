@@ -11,9 +11,10 @@ angular.module('epikDesignApp', [
   'ui.grid',
   'ui.grid.pagination',
   'ui.grid.selection',
-  'fcsa-number'
+  'fcsa-number',
+  'ui.select'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, fcsaNumberConfigProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, fcsaNumberConfigProvider, uiSelectConfig) {
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
 
@@ -23,6 +24,8 @@ angular.module('epikDesignApp', [
       maxDecimals: 2,
       preventInvalidInput: true
     });
+
+    uiSelectConfig.theme = 'bootstrap';
   })
 
   .run(["$rootScope", "settings", "$state", "i18nService", function ($rootScope, settings, $state, i18nService) {
