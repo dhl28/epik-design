@@ -50,5 +50,15 @@ angular.module('epikDesignApp')
         ncyBreadcrumb: {
           label: 'radiobutton 单选框'
         }
+      })
+      .state('main.component.widget.form.formvalidate', {
+        url: '/formvalidate',
+        templateUrl: 'app/comForm/comFormValidate/comFormValidate.html',
+        controller: 'ComFormValidateCtrl',
+        ncyBreadcrumb: {
+          label: 'formvalidate 表单验证'
+        }
       });
+
+
   });

@@ -4,7 +4,8 @@ angular.module('epikDesignApp')
   .controller('ComSelectCtrl', function ($scope) {
     $scope.vm = {
       class1: 2,
-      class2: [33,44]
+      class2: [33,44],
+      class3: 333
     }
     $scope.classifications = {
       class1: [
@@ -22,6 +23,14 @@ angular.module('epikDesignApp')
         {id: 44, name: '选项44', code: 'code44', path: 'dd'},
         {id: 55, name: '选项55', code: 'code55', path: 'ee'},
         {id: 66, name: '选项66', code: 'code66', path: 'ff'}
+      ],
+      class3 : [
+        {id: 111, name: '选项111', code: 'code111', path: 'aaa'},
+        {id: 222, name: '选项222', code: 'code222', path: 'bbb'},
+        {id: 333, name: '选项333', code: 'code333', path: 'ccc'},
+        {id: 444, name: '选项444', code: 'code444', path: 'ddd'},
+        {id: 555, name: '选项555', code: 'code555', path: 'eee'},
+        {id: 666, name: '选项666', code: 'code666', path: 'fff'}
       ]
     }
   });

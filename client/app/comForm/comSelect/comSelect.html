@@ -31,12 +31,17 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li>使用ui-select作为选择器</li>
+              <li>使用select或ui-select作为选择器</li>
               <li>ui-select支持单选，多选，查询，键盘选择，主题切换等功能</li>
             </ul>
-            <p>
-              <a ng-href="https://github.com/angular-ui/ui-select" target="_blank">https://github.com/angular-ui/ui-select</a>
-            </p>
+            <ul>
+              <li>
+                <a ng-href="https://docs.angularjs.org/api/ng/directive/select" target="_blank">https://docs.angularjs.org/api/ng/directive/select</a>
+              </li>
+              <li>
+                <a ng-href="https://github.com/angular-ui/ui-select" target="_blank">https://github.com/angular-ui/ui-select</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -63,10 +68,13 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li>禁用选择，ui-select标签加上ng-disabled="true"</li>
-              <li>禁用搜索, ui-select标签加上search-enabled="false",</li>
-              <li>选择结果为对象还是值，可以通过ui-select-choices标签repeat="item.id as item in classifications.class1" 设置item为id</li>
-              <li>ui-select-choices标签发ilter: {name : $select.search} 表示要过滤的字段 </li>
+              <li>ui-select 禁用，ui-select标签加上ng-disabled="true"</li>
+              <li>ui-select 禁用搜索, ui-select标签加上search-enabled="false",</li>
+              <li>ui-select 选择结果为对象还是值，可以通过ui-select-choices标签repeat="item.id as item in classifications.class1" 设置item为id</li>
+              <li>ui-select 过滤字段, 可以在ui-select-choices标签filter: {name : $select.search} 表示要过滤的字段 </li>
+              <li>ui-select 多选， ui-select标签加上multiple属性</li>
+              <li>ui-select 多选不支持ng-required, 添加了自定义指令ui-select-required，来验证是否选择</li>
+              <li>简单的select可以用原生的html标签</li>
             </ul>
           </div>
         </div>
@@ -86,15 +94,57 @@
                           </ui-select-choices>
                         </ui-select>
                         <span class="input-group-btn">
-                          <button ng-click="vm.class1 = undefined" class="btn btn-default">
+                          <button ng-click="vm.class1 = null" class="btn btn-default">
                             <span class="glyphicon glyphicon-trash"></span>
                           </button>
                         </span>
                       </div>
-                      <p ng-show="form1.select1.$invalid && !form1.select1.$pristine" class="help-block">输入格式不正确</p>
+                      <div class="help-block" ng-messages="form1.select1.$error" ng-show="form1.select1.$dirty">
+                        <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                      </div>
                     </div>
                     <div class="col-md-6">
                       <p class="form-control-static">vm.class1: {{vm.class1}}</p>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-class="{ 'has-error' : form1.select2.$invalid && !form1.select2.$pristine }">
+                    <label class="control-label col-md-2" for="select2">select2:</label>
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <ui-select multiple ui-select-required id="select2" name="select2" ng-model="vm.class2" ng-required="true" ng-disabled="disabled">
+                          <ui-select-match placeholder="请选择或搜索...">{{$item.name}}</ui-select-match>
+                          <ui-select-choices repeat="item.id as item in classifications.class2 | filter: {name : $select.search}">
+                            {{item.name}}
+                          </ui-select-choices>
+                        </ui-select>
+                        <span class="input-group-btn">
+                          <button ng-click="vm.class2 = null" class="btn btn-default">
+                            <span class="glyphicon glyphicon-trash"></span>
+                          </button>
+                        </span>
+                      </div>
+                      <div class="help-block" ng-messages="form1.select2.$error" ng-show="form1.select2.$dirty">
+                        <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="form-control-static">vm.class2: {{vm.class2}}</p>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-class="{ 'has-error' : form1.select3.$invalid && !form1.select3.$pristine }">
+                    <label class="control-label col-md-2" for="select3">select3:</label>
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <select name="select3" id="select3" ng-model="vm.class3" ng-required="true" class="form-control"
+                            ng-options="option.id as option.name for option in classifications.class3">
+                        </select>
+                      </div>
+                      <div class="help-block" ng-messages="form1.class3.$error" ng-show="form1.class3.$dirty">
+                        <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="form-control-static">vm.class3: {{vm.class3}}</p>
                     </div>
                   </div>
                 </form>
@@ -119,169 +169,92 @@
         &lt;/ui-select-choices&gt;
       &lt;/ui-select&gt;
       &lt;span class=&quot;input-group-btn&quot;&gt;
-        &lt;button ng-click=&quot;vm.class1 = undefined&quot; class=&quot;btn btn-default&quot;&gt;
+        &lt;button ng-click=&quot;vm.class1 = null&quot; class=&quot;btn btn-default&quot;&gt;
           &lt;span class=&quot;glyphicon glyphicon-trash&quot;&gt;&lt;/span&gt;
         &lt;/button&gt;
       &lt;/span&gt;
     &lt;/div&gt;
-    &lt;p ng-show=&quot;form1.select1.$invalid &amp;&amp; !form1.select1.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
+    &lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.select1.$error&quot; ng-show=&quot;form1.select1.$dirty&quot;&gt;
+      &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;col-md-6&quot;&gt;
     &lt;p class=&quot;form-control-static&quot;&gt;vm.class1: {{vm.class1}}&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;/form&gt;</pre>
-                      <br/>
-                      <pre class="prettyprint lang-js linenums">angular.module('epikDesignApp')
-.controller('ComSelectCtrl', function ($scope) {
-  $scope.vm = {
-    class1: 2,
-    class2: [33,44]
-  }
-  $scope.classifications = {
-    class1: [
-      {id: 1, name: '选项1', code: 'code1', path: 'a'},
-      {id: 2, name: '选项2', code: 'code2', path: 'b'},
-      {id: 3, name: '选项3', code: 'code3', path: 'c'},
-      {id: 4, name: '选项4', code: 'code4', path: 'd'},
-      {id: 5, name: '选项5', code: 'code5', path: 'e'},
-      {id: 6, name: '选项6', code: 'code6', path: 'f'}
-    ],
-    class2 : [
-      {id: 11, name: '选项11', code: 'code11', path: 'aa'},
-      {id: 22, name: '选项22', code: 'code22', path: 'bb'},
-      {id: 33, name: '选项33', code: 'code33', path: 'cc'},
-      {id: 44, name: '选项44', code: 'code44', path: 'dd'},
-      {id: 55, name: '选项55', code: 'code55', path: 'ee'},
-      {id: 66, name: '选项66', code: 'code66', path: 'ff'}
-    ]
-  }
-});
-
-                      </pre>
-                    </accordion-group>
-                  </accordion>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="portlet light">
-      <div class="portlet-title">
-        <div class="caption">
-          <i class="icon-settings"></i>
-          <span class="caption-subject bold uppercase">实例</span>
-          <span class="caption-helper">多选</span>
-        </div>
-        <div class="tools">
-          <a href="" class="collapse">
-          </a>
-          <a href="" class="fullscreen">
-          </a>
-        </div>
-      </div>
-      <div class="portlet-body">
-        <div class="row">
-          <div class="col-md-12">
-            <ul>
-              <li>多选,ui-select 添加multiple属性</li>
-              <li>ui-select多选不支持ng-required, 添加了自定义指令ui-select-required，来验证是否选择</li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="code-box">
-              <div class="code-box-head">
-                <form name="form2" class="form-horizontal" novalidate>
-                  <div class="form-group" ng-class="{ 'has-error' : form2.select2.$invalid && !form2.select2.$pristine }">
-                    <label class="control-label col-md-2" for="select2">select2:</label>
-                    <div class="col-md-4">
-                      <div class="input-group">
-                        <ui-select multiple ui-select-required id="select2" name="select2" ng-model="vm.class2" ng-required="true" ng-disabled="disabled">
-                          <ui-select-match placeholder="请选择或搜索...">{{$item.name}}</ui-select-match>
-                          <ui-select-choices repeat="item.id as item in classifications.class2 | filter: {name : $select.search}">
-                            {{item.name}}
-                          </ui-select-choices>
-                        </ui-select>
-                        <span class="input-group-btn">
-                          <button ng-click="vm.class2 = undefined" class="btn btn-default">
-                            <span class="glyphicon glyphicon-trash"></span>
-                          </button>
-                        </span>
-                      </div>
-                      <p ng-show="form2.select2.$invalid && !form2.select2.$pristine" class="help-block">输入格式不正确</p>
-                    </div>
-                    <div class="col-md-6">
-                      <p class="form-control-static">vm.class2: {{vm.class2}}</p>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="code-box-body">
-                <div class="code-box-code">
-                  <accordion>
-                    <accordion-group is-open="true">
-                      <accordion-heading>代码
-                        <i class="pull-right fa fa-angle-right"
-                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
-                      </accordion-heading>
-                      <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form2&quot; class=&quot;form-horizontal&quot; novalidate&gt;
-  &lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form2.select2.$invalid &amp;&amp; !form2.select2.$pristine }&quot;&gt;
-    &lt;label class=&quot;control-label col-md-2&quot; for=&quot;select2&quot;&gt;select2:&lt;/label&gt;
-    &lt;div class=&quot;col-md-4&quot;&gt;
-      &lt;div class=&quot;input-group&quot;&gt;
-        &lt;ui-select multiple ui-select-required id=&quot;select2&quot; name=&quot;select2&quot; ng-model=&quot;vm.class2&quot; ng-required=&quot;true&quot; ng-disabled=&quot;disabled&quot;&gt;
-          &lt;ui-select-match placeholder=&quot;请选择或搜索...&quot;&gt;{{$item.name}}&lt;/ui-select-match&gt;
-          &lt;ui-select-choices repeat=&quot;item.id as item in classifications.class2 | filter: {name : $select.search}&quot;&gt;
-            {{item.name}}
-          &lt;/ui-select-choices&gt;
-        &lt;/ui-select&gt;
-        &lt;span class=&quot;input-group-btn&quot;&gt;
-          &lt;button ng-click=&quot;vm.class2 = undefined&quot; class=&quot;btn btn-default&quot;&gt;
-            &lt;span class=&quot;glyphicon glyphicon-trash&quot;&gt;&lt;/span&gt;
-          &lt;/button&gt;
-        &lt;/span&gt;
-      &lt;/div&gt;
-      &lt;p ng-show=&quot;form2.select2.$invalid &amp;&amp; !form2.select2.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
+&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.select2.$invalid &amp;&amp; !form1.select2.$pristine }&quot;&gt;
+  &lt;label class=&quot;control-label col-md-2&quot; for=&quot;select2&quot;&gt;select2:&lt;/label&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+      &lt;ui-select multiple ui-select-required id=&quot;select2&quot; name=&quot;select2&quot; ng-model=&quot;vm.class2&quot; ng-required=&quot;true&quot; ng-disabled=&quot;disabled&quot;&gt;
+        &lt;ui-select-match placeholder=&quot;请选择或搜索...&quot;&gt;{{$item.name}}&lt;/ui-select-match&gt;
+        &lt;ui-select-choices repeat=&quot;item.id as item in classifications.class2 | filter: {name : $select.search}&quot;&gt;
+          {{item.name}}
+        &lt;/ui-select-choices&gt;
+      &lt;/ui-select&gt;
+      &lt;span class=&quot;input-group-btn&quot;&gt;
+        &lt;button ng-click=&quot;vm.class2 = null&quot; class=&quot;btn btn-default&quot;&gt;
+          &lt;span class=&quot;glyphicon glyphicon-trash&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/span&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;col-md-6&quot;&gt;
-      &lt;p class=&quot;form-control-static&quot;&gt;vm.class2: {{vm.class2}}&lt;/p&gt;
+    &lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.select2.$error&quot; ng-show=&quot;form1.select2.$dirty&quot;&gt;
+      &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;
+    &lt;p class=&quot;form-control-static&quot;&gt;vm.class2: {{vm.class2}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.select3.$invalid &amp;&amp; !form1.select3.$pristine }&quot;&gt;
+  &lt;label class=&quot;control-label col-md-2&quot; for=&quot;select3&quot;&gt;select3:&lt;/label&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+      &lt;select name=&quot;select3&quot; id=&quot;select3&quot; ng-model=&quot;vm.class3&quot; ng-required=&quot;true&quot; class=&quot;form-control&quot;
+          ng-options=&quot;option.id as option.name for option in classifications.class3&quot;&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.class3.$error&quot; ng-show=&quot;form1.class3.$dirty&quot;&gt;
+      &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;
+    &lt;p class=&quot;form-control-static&quot;&gt;vm.class3: {{vm.class3}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 &lt;/form&gt;</pre>
                       <br/>
-                      <pre class="prettyprint lang-js linenums">angular.module('epikDesignApp')
-.controller('ComSelectCtrl', function ($scope) {
-  $scope.vm = {
-    class1: 2,
-    class2: [33,44]
-  }
-  $scope.classifications = {
-    class1: [
-      {id: 1, name: '选项1', code: 'code1', path: 'a'},
-      {id: 2, name: '选项2', code: 'code2', path: 'b'},
-      {id: 3, name: '选项3', code: 'code3', path: 'c'},
-      {id: 4, name: '选项4', code: 'code4', path: 'd'},
-      {id: 5, name: '选项5', code: 'code5', path: 'e'},
-      {id: 6, name: '选项6', code: 'code6', path: 'f'}
-    ],
-    class2 : [
-      {id: 11, name: '选项11', code: 'code11', path: 'aa'},
-      {id: 22, name: '选项22', code: 'code22', path: 'bb'},
-      {id: 33, name: '选项33', code: 'code33', path: 'cc'},
-      {id: 44, name: '选项44', code: 'code44', path: 'dd'},
-      {id: 55, name: '选项55', code: 'code55', path: 'ee'},
-      {id: 66, name: '选项66', code: 'code66', path: 'ff'}
-    ]
-  }
-});</pre>
+                      <pre class="prettyprint lang-js linenums">$scope.vm = {
+  class1: 2,
+  class2: [33,44],
+  class3: 333
+}
+$scope.classifications = {
+  class1: [
+    {id: 1, name: '选项1', code: 'code1', path: 'a'},
+    {id: 2, name: '选项2', code: 'code2', path: 'b'},
+    {id: 3, name: '选项3', code: 'code3', path: 'c'},
+    {id: 4, name: '选项4', code: 'code4', path: 'd'},
+    {id: 5, name: '选项5', code: 'code5', path: 'e'},
+    {id: 6, name: '选项6', code: 'code6', path: 'f'}
+  ],
+  class2 : [
+    {id: 11, name: '选项11', code: 'code11', path: 'aa'},
+    {id: 22, name: '选项22', code: 'code22', path: 'bb'},
+    {id: 33, name: '选项33', code: 'code33', path: 'cc'},
+    {id: 44, name: '选项44', code: 'code44', path: 'dd'},
+    {id: 55, name: '选项55', code: 'code55', path: 'ee'},
+    {id: 66, name: '选项66', code: 'code66', path: 'ff'}
+  ],
+  class3 : [
+    {id: 111, name: '选项111', code: 'code111', path: 'aaa'},
+    {id: 222, name: '选项222', code: 'code222', path: 'bbb'},
+    {id: 333, name: '选项333', code: 'code333', path: 'ccc'},
+    {id: 444, name: '选项444', code: 'code444', path: 'ddd'},
+    {id: 555, name: '选项555', code: 'code555', path: 'eee'},
+    {id: 666, name: '选项666', code: 'code666', path: 'fff'}
+  ]
+}</pre>
                     </accordion-group>
                   </accordion>
                 </div>

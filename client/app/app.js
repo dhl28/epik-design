@@ -4,6 +4,8 @@ angular.module('epikDesignApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
+  'ngMessages',
+  'ngAnimate',
   'ui.router',
   'ui.bootstrap',
   'ncy-angular-breadcrumb',

@@ -70,7 +70,12 @@
               <li>thousandsSeparator 千分位</li>
               <li>decimalMark 小数点</li>
             </ul>
-            <p>全局配置thousandsSeparator=，maxDecimals=2，preventInvalidInput: true</p>
+            <ul>全局配置
+              <li>thousandsSeparator: ',</li>
+              <li>decimalMark: '.'</li>
+              <li>maxDecimals: 2</li>
+              <li>preventInvalidInput: true</li>
+            </ul>
           </div>
         </div>
         <div class="row">
@@ -78,12 +83,14 @@
             <div class="code-box">
               <div class="code-box-head">
                 <form name="form1" class="form-horizontal" novalidate>
-                  <div class="form-group" ng-class="{ 'has-error' : form1.count1.$invalid && !form1.count1.$pristine }">
-                    <label class="control-label col-md-2" for="count1">employeeCount:</label>
+                  <div class="form-group" ng-class="{ 'has-error': form1.count1.$touched && form1.count1.$invalid }">
+                    <label class="control-label col-md-2" for="count1">count1:</label>
                     <div class="col-md-4">
                       <input type='text' id="count1" name="count1" ng-model='vm.count1' class="form-control"
-                             fcsa-number="{ max: 9000, min: -5, thousandsSeparator: ',' }"/>
-                      <p ng-show="form1.count1.$invalid && !form1.count1.$pristine" class="help-block">输入格式不正确</p>
+                             fcsa-number="{ max: 9000, min: -5}" ng-required="true"/>
+                      <div class="help-block" ng-messages="form1.count1.$error" ng-show="form1.count1.$dirty">
+                        <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                      </div>
                     </div>
                     <div class="col-md-6">
                       <p class="form-control-static">vm.count1: {{vm.count1}}</p>
@@ -100,22 +107,20 @@
                            ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
                       </accordion-heading>
                       <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
-  &lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.count1.$invalid &amp;&amp; !form1.count1.$pristine }&quot;&gt;
-    &lt;label class=&quot;control-label col-md-2&quot; for=&quot;count1&quot;&gt;employeeCount:&lt;/label&gt;
-    &lt;div class=&quot;col-md-4&quot;&gt;
-      &lt;input type=&#39;text&#39; id=&quot;count1&quot; name=&quot;count1&quot; ng-model=&#39;vm.count1&#39; class=&quot;form-control&quot;
-             fcsa-number=&quot;{ max: 9000, min: -5, maxDecimals: 2, preventInvalidInput: true, append: &#39;%&#39;, thousandsSeparator: &#39;,&#39;, decimalMark: &#39;.&#39; }&quot;/&gt;
-      &lt;p ng-show=&quot;form1.count1.$invalid &amp;&amp; !form1.count1.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md-6&quot;&gt;
-      &lt;p class=&quot;form-control-static&quot;&gt;vm.count1: {{vm.count1}}&lt;/p&gt;
+&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39;: form1.count1.$dirty &amp;&amp; form1.count1.$invalid }&quot;&gt;
+  &lt;label class=&quot;control-label col-md-2&quot; for=&quot;count1&quot;&gt;count1:&lt;/label&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;input type=&#39;text&#39; id=&quot;count1&quot; name=&quot;count1&quot; ng-model=&#39;vm.count1&#39; class=&quot;form-control&quot;
+           fcsa-number=&quot;{ max: 9000, min: -5 }&quot; ng-required=&quot;true&quot;/&gt;
+    &lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.count1.$error&quot; ng-show=&quot;form1.count1.$touched&quot;&gt;
+      &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;
+    &lt;p class=&quot;form-control-static&quot;&gt;vm.count1: {{vm.count1}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 &lt;/form&gt;</pre>
-                      <br/>
-                      <pre class="prettyprint lang-js linenums">$scope.vm = {
-  count1 : 0
-}</pre>
                     </accordion-group>
                   </accordion>
                 </div>
