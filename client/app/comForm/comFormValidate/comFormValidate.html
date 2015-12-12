@@ -31,7 +31,8 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li></li>
+              <li>angular表单验证</li>
+              <li>集成ng-message</li>
             </ul>
           </div>
         </div>
@@ -46,7 +47,7 @@
         <div class="caption">
           <i class="icon-settings"></i>
           <span class="caption-subject bold uppercase">实例</span>
-          <span class="caption-helper"></span>
+          <span class="caption-helper">布局</span>
         </div>
         <div class="tools">
           <a href="" class="collapse">
@@ -58,27 +59,219 @@
       <div class="portlet-body">
         <div class="row">
           <div class="col-md-12">
+            <p>使用bootstrap的表单布局，修改水平表单label左对齐</p>
+            <p><a ng-href="http://v3.bootcss.com/css/#forms" target="_blank">http://v3.bootcss.com/css/#forms</a></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <div class="code-box">
               <div class="code-box-head">
-                <form name="form1" class="form-horizontal" novalidate>
+                <p>1 垂直 form</p>
+                <form novalidate>
                   <div class="form-group">
-                    <label class="control-label col-md-2">input1:</label>
+                    <label for="control1">control1</label>
+                    <input type="email" class="form-control" id="control1" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="control2">control2</label>
+                    <input type="password" class="form-control" id="control2" placeholder="Password">
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> control3
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-default">control4</button>
+                </form>
+                <hr/>
+                <p>2 内连 form-inline</p>
+                <form class="form-inline" novalidate>
+                  <div class="form-group">
+                    <label class="sr-only" for="control1">control11</label>
+                    <input type="email" class="form-control" id="control11" placeholder="control11">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="control22">control22</label>
+                    <input type="password" class="form-control" id="control22" placeholder="control22">
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> control33
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-default">control44</button>
+                </form>
+                <hr/>
+                <p>3 水平 form-horizontal</p>
+                <form class="form-horizontal" novalidate>
+                  <div class="form-group">
+                    <label for="control111" class="col-md-2 control-label text-left">control111</label>
                     <div class="col-md-4">
-                      <input type="text" name="input1" class="form-control">
+                      <input type="email" class="form-control" id="control111" placeholder="control111">
                     </div>
-                    <label class="control-label col-md-2">input2:</label>
+                    <label for="control222" class="col-md-2 control-label text-left">control222</label>
                     <div class="col-md-4">
-                      <input type="text" name="input2" class="form-control">
+                      <input type="password" class="form-control" id="control222" placeholder="control222">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="control-label col-md-2">input3:</label>
+                    <label class="col-md-2 control-label text-left">control333</label>
                     <div class="col-md-4">
-                      <input type="text" name="input3" class="form-control">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" id="control333" value="option1"> control333
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" id="control444" value="option2"> control444
+                      </label>
                     </div>
-                    <label class="control-label col-md-2">input4:</label>
-                    <div class="col-md-4">
-                      <input type="text" name="input4" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                      <button type="submit" class="btn btn-default">control444</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>代码
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-html linenums">&lt;p&gt;1 垂直 form&lt;/p&gt;
+&lt;form novalidate&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;control1&quot;&gt;control1&lt;/label&gt;
+    &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;control1&quot; placeholder=&quot;Email&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;control2&quot;&gt;control2&lt;/label&gt;
+    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;control2&quot; placeholder=&quot;Password&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot;&gt; control3
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;control4&lt;/button&gt;
+&lt;/form&gt;
+&lt;hr/&gt;
+&lt;p&gt;2 内连 form-inline&lt;/p&gt;
+&lt;form class=&quot;form-inline&quot; novalidate&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;sr-only&quot; for=&quot;control1&quot;&gt;control11&lt;/label&gt;
+    &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;control11&quot; placeholder=&quot;control11&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;sr-only&quot; for=&quot;control22&quot;&gt;control22&lt;/label&gt;
+    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;control22&quot; placeholder=&quot;control22&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot;&gt; control33
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;control44&lt;/button&gt;
+&lt;/form&gt;
+&lt;hr/&gt;
+&lt;p&gt;3 水平 form-horizontal&lt;/p&gt;
+&lt;form class=&quot;form-horizontal&quot; novalidate&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;control111&quot; class=&quot;col-md-2 control-label text-left&quot;&gt;control111&lt;/label&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;control111&quot; placeholder=&quot;control111&quot;&gt;
+    &lt;/div&gt;
+    &lt;label for=&quot;control222&quot; class=&quot;col-md-2 control-label text-left&quot;&gt;control222&lt;/label&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;control222&quot; placeholder=&quot;control222&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;col-md-2 control-label text-left&quot;&gt;control333&lt;/label&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;label class=&quot;checkbox-inline&quot;&gt;
+        &lt;input type=&quot;checkbox&quot; id=&quot;control333&quot; value=&quot;option1&quot;&gt; control333
+      &lt;/label&gt;
+      &lt;label class=&quot;checkbox-inline&quot;&gt;
+        &lt;input type=&quot;checkbox&quot; id=&quot;control444&quot; value=&quot;option2&quot;&gt; control444
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;col-md-offset-2 col-md-10&quot;&gt;
+      &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;control444&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">实例</span>
+          <span class="caption-helper">验证指令，错误提示</span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>使用angular验证指令</li>
+              <li>使用ng-message指令设置可重用的错误提示</li>
+              <li>自定义验证指令的方法</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                <form name="form1" class="form-horizontal" novalidate>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group" ng-class="{'has-error':form1.input1.$invalid && !form1.input1.$pristine}">
+                        <label for="input1" class="col-md-2 control-label text-left">input1</label>
+                        <div class="col-md-8">
+                          <input id="input1" name="input1" type="text" ng-model="vm.input1" class="form-control" ng-required="true">
+                          <div class="help-block" ng-messages="form1.input1.$error" ng-show="form1.input1.$dirty">
+                            <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group" ng-class="{'has-error':form1.input2.$invalid && !form1.input2.$pristine}">
+                        <label for="input2" class="col-md-2 control-label text-left">input2</label>
+                        <div class="col-md-8" >
+                          <select id="input2" name="input2" ng-model="vm.input2" class="form-control"
+                                  ng-options="option.id as option.name for option in classifications.class1" ng-required="true" >
+                          </select>
+                          <div class="help-block" ng-messages="form1.input2.$error" ng-show="form1.input2.$dirty">
+                            <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </form>
