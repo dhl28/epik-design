@@ -83,12 +83,12 @@
             <div class="code-box">
               <div class="code-box-head">
                 <form name="form1" class="form-horizontal" novalidate>
-                  <div class="form-group" ng-class="{ 'has-error': form1.count1.$touched && form1.count1.$invalid }">
+                  <div class="form-group">
                     <label class="control-label col-md-2" for="count1">count1:</label>
                     <div class="col-md-4">
                       <input type='text' id="count1" name="count1" ng-model='vm.count1' class="form-control"
                              fcsa-number="{ max: 9000, min: -5}" ng-required="true"/>
-                      <div class="help-block" ng-messages="form1.count1.$error" ng-show="form1.count1.$dirty">
+                      <div class="text-danger" ng-messages="form1.count1.$error">
                         <div ng-messages-include="/components/tpls/errorMessages.html"></div>
                       </div>
                     </div>
@@ -107,12 +107,12 @@
                            ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
                       </accordion-heading>
                       <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
-&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39;: form1.count1.$dirty &amp;&amp; form1.count1.$invalid }&quot;&gt;
+&lt;div class=&quot;form-group&quot;&gt;
   &lt;label class=&quot;control-label col-md-2&quot; for=&quot;count1&quot;&gt;count1:&lt;/label&gt;
   &lt;div class=&quot;col-md-4&quot;&gt;
     &lt;input type=&#39;text&#39; id=&quot;count1&quot; name=&quot;count1&quot; ng-model=&#39;vm.count1&#39; class=&quot;form-control&quot;
-           fcsa-number=&quot;{ max: 9000, min: -5 }&quot; ng-required=&quot;true&quot;/&gt;
-    &lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.count1.$error&quot; ng-show=&quot;form1.count1.$touched&quot;&gt;
+           fcsa-number=&quot;{ max: 9000, min: -5}&quot; ng-required=&quot;true&quot;/&gt;
+    &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.count1.$error&quot;&gt;
       &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;

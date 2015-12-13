@@ -83,7 +83,7 @@
             <div class="code-box">
               <div class="code-box-head">
                 <form name="form1" class="form-horizontal" novalidate>
-                  <div class="form-group" ng-class="{ 'has-error' : form1.select1.$invalid && !form1.select1.$pristine }">
+                  <div class="form-group">
                     <label class="control-label col-md-2" for="select1">select1:</label>
                     <div class="col-md-4">
                       <div class="input-group">
@@ -99,7 +99,7 @@
                           </button>
                         </span>
                       </div>
-                      <div class="help-block" ng-messages="form1.select1.$error" ng-show="form1.select1.$dirty">
+                      <div class="text-danger" ng-messages="form1.select1.$error">
                         <div ng-messages-include="/components/tpls/errorMessages.html"></div>
                       </div>
                     </div>
@@ -107,7 +107,7 @@
                       <p class="form-control-static">vm.class1: {{vm.class1}}</p>
                     </div>
                   </div>
-                  <div class="form-group" ng-class="{ 'has-error' : form1.select2.$invalid && !form1.select2.$pristine }">
+                  <div class="form-group">
                     <label class="control-label col-md-2" for="select2">select2:</label>
                     <div class="col-md-4">
                       <div class="input-group">
@@ -123,7 +123,7 @@
                           </button>
                         </span>
                       </div>
-                      <div class="help-block" ng-messages="form1.select2.$error" ng-show="form1.select2.$dirty">
+                      <div class="text-danger" ng-messages="form1.select2.$error">
                         <div ng-messages-include="/components/tpls/errorMessages.html"></div>
                       </div>
                     </div>
@@ -131,7 +131,7 @@
                       <p class="form-control-static">vm.class2: {{vm.class2}}</p>
                     </div>
                   </div>
-                  <div class="form-group" ng-class="{ 'has-error' : form1.select3.$invalid && !form1.select3.$pristine }">
+                  <div class="form-group">
                     <label class="control-label col-md-2" for="select3">select3:</label>
                     <div class="col-md-4">
                       <div class="input-group">
@@ -139,7 +139,7 @@
                             ng-options="option.id as option.name for option in classifications.class3">
                         </select>
                       </div>
-                      <div class="help-block" ng-messages="form1.class3.$error" ng-show="form1.class3.$dirty">
+                      <div class="text-danger" ng-messages="form1.class3.$error">
                         <div ng-messages-include="/components/tpls/errorMessages.html"></div>
                       </div>
                     </div>
@@ -158,7 +158,7 @@
                            ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
                       </accordion-heading>
                       <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
-&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.select1.$invalid &amp;&amp; !form1.select1.$pristine }&quot;&gt;
+&lt;div class=&quot;form-group&quot;&gt;
   &lt;label class=&quot;control-label col-md-2&quot; for=&quot;select1&quot;&gt;select1:&lt;/label&gt;
   &lt;div class=&quot;col-md-4&quot;&gt;
     &lt;div class=&quot;input-group&quot;&gt;
@@ -174,7 +174,7 @@
         &lt;/button&gt;
       &lt;/span&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.select1.$error&quot; ng-show=&quot;form1.select1.$dirty&quot;&gt;
+    &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.select1.$error&quot;&gt;
       &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -182,7 +182,7 @@
     &lt;p class=&quot;form-control-static&quot;&gt;vm.class1: {{vm.class1}}&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.select2.$invalid &amp;&amp; !form1.select2.$pristine }&quot;&gt;
+&lt;div class=&quot;form-group&quot;&gt;
   &lt;label class=&quot;control-label col-md-2&quot; for=&quot;select2&quot;&gt;select2:&lt;/label&gt;
   &lt;div class=&quot;col-md-4&quot;&gt;
     &lt;div class=&quot;input-group&quot;&gt;
@@ -198,7 +198,7 @@
         &lt;/button&gt;
       &lt;/span&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.select2.$error&quot; ng-show=&quot;form1.select2.$dirty&quot;&gt;
+    &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.select2.$error&quot;&gt;
       &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -206,7 +206,7 @@
     &lt;p class=&quot;form-control-static&quot;&gt;vm.class2: {{vm.class2}}&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.select3.$invalid &amp;&amp; !form1.select3.$pristine }&quot;&gt;
+&lt;div class=&quot;form-group&quot;&gt;
   &lt;label class=&quot;control-label col-md-2&quot; for=&quot;select3&quot;&gt;select3:&lt;/label&gt;
   &lt;div class=&quot;col-md-4&quot;&gt;
     &lt;div class=&quot;input-group&quot;&gt;
@@ -214,7 +214,7 @@
           ng-options=&quot;option.id as option.name for option in classifications.class3&quot;&gt;
       &lt;/select&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.class3.$error&quot; ng-show=&quot;form1.class3.$dirty&quot;&gt;
+    &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.class3.$error&quot;&gt;
       &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;

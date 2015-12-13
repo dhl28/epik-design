@@ -4,6 +4,15 @@ angular.module('epikDesignApp')
   .controller('ComFormValidateCtrl', function ($scope) {
     $scope.vm = {}
 
+    $scope.datepickerCtrl = {
+      input4Opened : false,
+      funOpenInput4 : function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        this.input4Opened = true;
+      }
+    }
+
     $scope.classifications = {
       class1: [
         {id: 1, name: '选项1', code: 'code1', path: 'a'},

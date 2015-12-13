@@ -2,3 +2,16 @@
   /* text-align:right; */
   text-align:left;
 }
+
+.ui-select-multiple.ui-select-bootstrap {
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
+  margin-bottom: 0 !important;
+}
+
+.ui-select-multiple.ui-select-bootstrap input.ui-select-search {
+  height: 23px !important;
+}

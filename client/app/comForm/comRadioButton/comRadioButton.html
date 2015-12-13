@@ -64,13 +64,13 @@
               <div class="code-box-head">
                 <p>从数据字典读取选择项，绑定值</p>
                 <form name="form1" class="form-horizontal" novalidate>
-                  <div class="form-group" ng-class="{ 'has-error' : form1.radio1.$invalid && !form1.radio1.$pristine }">
+                  <div class="form-group">
                     <label class="control-label col-md-2">radio1:</label>
                     <div class="col-md-4">
                       <label ng-repeat="cls in classifications.classOne" class="radio-inline">
                         <input name="radio1" type="radio" ng-model="vm.classOnePick" ng-value="cls.id" ng-required="true">{{cls.name}}
                       </label>
-                      <div class="help-block" ng-messages="form1.radio1.$error" ng-show="form1.radio1.$dirty">
+                      <div class="text-danger" ng-messages="form1.radio1.$error">
                         <div ng-messages-include="/components/tpls/errorMessages.html"></div>
                       </div>
                     </div>
@@ -89,13 +89,13 @@
                            ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
                       </accordion-heading>
                       <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
-&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.radio1.$invalid &amp;&amp; !form1.radio1.$pristine }&quot;&gt;
+&lt;div class=&quot;form-group&quot;&gt;
   &lt;label class=&quot;control-label col-md-2&quot;&gt;radio1:&lt;/label&gt;
   &lt;div class=&quot;col-md-4&quot;&gt;
     &lt;label ng-repeat=&quot;cls in classifications.classOne&quot; class=&quot;radio-inline&quot;&gt;
-      &lt;input name=&quot;radio1&quot; type=&quot;radio&quot; ng-model=&quot;vm.classOnePick&quot; ng-value=&quot;{{cls.id}}&quot; ng-required=&quot;true&quot;&gt;{{cls.name}}
+      &lt;input name=&quot;radio1&quot; type=&quot;radio&quot; ng-model=&quot;vm.classOnePick&quot; ng-value=&quot;cls.id&quot; ng-required=&quot;true&quot;&gt;{{cls.name}}
     &lt;/label&gt;
-    &lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.radio1.$error&quot; ng-show=&quot;form1.radio1.$dirty&quot;&gt;
+    &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.radio1.$error&quot;&gt;
       &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;

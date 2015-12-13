@@ -47,183 +47,6 @@
         <div class="caption">
           <i class="icon-settings"></i>
           <span class="caption-subject bold uppercase">实例</span>
-          <span class="caption-helper">布局</span>
-        </div>
-        <div class="tools">
-          <a href="" class="collapse">
-          </a>
-          <a href="" class="fullscreen">
-          </a>
-        </div>
-      </div>
-      <div class="portlet-body">
-        <div class="row">
-          <div class="col-md-12">
-            <p>使用bootstrap的表单布局，修改水平表单label左对齐</p>
-            <p><a ng-href="http://v3.bootcss.com/css/#forms" target="_blank">http://v3.bootcss.com/css/#forms</a></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="code-box">
-              <div class="code-box-head">
-                <p>1 垂直 form</p>
-                <form novalidate>
-                  <div class="form-group">
-                    <label for="control1">control1</label>
-                    <input type="email" class="form-control" id="control1" placeholder="Email">
-                  </div>
-                  <div class="form-group">
-                    <label for="control2">control2</label>
-                    <input type="password" class="form-control" id="control2" placeholder="Password">
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> control3
-                    </label>
-                  </div>
-                  <button type="submit" class="btn btn-default">control4</button>
-                </form>
-                <hr/>
-                <p>2 内连 form-inline</p>
-                <form class="form-inline" novalidate>
-                  <div class="form-group">
-                    <label class="sr-only" for="control1">control11</label>
-                    <input type="email" class="form-control" id="control11" placeholder="control11">
-                  </div>
-                  <div class="form-group">
-                    <label class="sr-only" for="control22">control22</label>
-                    <input type="password" class="form-control" id="control22" placeholder="control22">
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> control33
-                    </label>
-                  </div>
-                  <button type="submit" class="btn btn-default">control44</button>
-                </form>
-                <hr/>
-                <p>3 水平 form-horizontal</p>
-                <form class="form-horizontal" novalidate>
-                  <div class="form-group">
-                    <label for="control111" class="col-md-2 control-label text-left">control111</label>
-                    <div class="col-md-4">
-                      <input type="email" class="form-control" id="control111" placeholder="control111">
-                    </div>
-                    <label for="control222" class="col-md-2 control-label text-left">control222</label>
-                    <div class="col-md-4">
-                      <input type="password" class="form-control" id="control222" placeholder="control222">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-md-2 control-label text-left">control333</label>
-                    <div class="col-md-4">
-                      <label class="checkbox-inline">
-                        <input type="checkbox" id="control333" value="option1"> control333
-                      </label>
-                      <label class="checkbox-inline">
-                        <input type="checkbox" id="control444" value="option2"> control444
-                      </label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                      <button type="submit" class="btn btn-default">control444</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="code-box-body">
-                <div class="code-box-code">
-                  <accordion>
-                    <accordion-group is-open="true">
-                      <accordion-heading>代码
-                        <i class="pull-right fa fa-angle-right"
-                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
-                      </accordion-heading>
-                      <pre class="prettyprint lang-html linenums">&lt;p&gt;1 垂直 form&lt;/p&gt;
-&lt;form novalidate&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label for=&quot;control1&quot;&gt;control1&lt;/label&gt;
-    &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;control1&quot; placeholder=&quot;Email&quot;&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label for=&quot;control2&quot;&gt;control2&lt;/label&gt;
-    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;control2&quot; placeholder=&quot;Password&quot;&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;checkbox&quot;&gt;
-    &lt;label&gt;
-      &lt;input type=&quot;checkbox&quot;&gt; control3
-    &lt;/label&gt;
-  &lt;/div&gt;
-  &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;control4&lt;/button&gt;
-&lt;/form&gt;
-&lt;hr/&gt;
-&lt;p&gt;2 内连 form-inline&lt;/p&gt;
-&lt;form class=&quot;form-inline&quot; novalidate&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label class=&quot;sr-only&quot; for=&quot;control1&quot;&gt;control11&lt;/label&gt;
-    &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;control11&quot; placeholder=&quot;control11&quot;&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label class=&quot;sr-only&quot; for=&quot;control22&quot;&gt;control22&lt;/label&gt;
-    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;control22&quot; placeholder=&quot;control22&quot;&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;checkbox&quot;&gt;
-    &lt;label&gt;
-      &lt;input type=&quot;checkbox&quot;&gt; control33
-    &lt;/label&gt;
-  &lt;/div&gt;
-  &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;control44&lt;/button&gt;
-&lt;/form&gt;
-&lt;hr/&gt;
-&lt;p&gt;3 水平 form-horizontal&lt;/p&gt;
-&lt;form class=&quot;form-horizontal&quot; novalidate&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label for=&quot;control111&quot; class=&quot;col-md-2 control-label text-left&quot;&gt;control111&lt;/label&gt;
-    &lt;div class=&quot;col-md-4&quot;&gt;
-      &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;control111&quot; placeholder=&quot;control111&quot;&gt;
-    &lt;/div&gt;
-    &lt;label for=&quot;control222&quot; class=&quot;col-md-2 control-label text-left&quot;&gt;control222&lt;/label&gt;
-    &lt;div class=&quot;col-md-4&quot;&gt;
-      &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;control222&quot; placeholder=&quot;control222&quot;&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label class=&quot;col-md-2 control-label text-left&quot;&gt;control333&lt;/label&gt;
-    &lt;div class=&quot;col-md-4&quot;&gt;
-      &lt;label class=&quot;checkbox-inline&quot;&gt;
-        &lt;input type=&quot;checkbox&quot; id=&quot;control333&quot; value=&quot;option1&quot;&gt; control333
-      &lt;/label&gt;
-      &lt;label class=&quot;checkbox-inline&quot;&gt;
-        &lt;input type=&quot;checkbox&quot; id=&quot;control444&quot; value=&quot;option2&quot;&gt; control444
-      &lt;/label&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;div class=&quot;col-md-offset-2 col-md-10&quot;&gt;
-      &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;control444&lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/form&gt;</pre>
-                    </accordion-group>
-                  </accordion>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="portlet light">
-      <div class="portlet-title">
-        <div class="caption">
-          <i class="icon-settings"></i>
-          <span class="caption-subject bold uppercase">实例</span>
           <span class="caption-helper">验证指令，错误提示</span>
         </div>
         <div class="tools">
@@ -238,7 +61,16 @@
           <div class="col-md-12">
             <ul>
               <li>使用angular验证指令</li>
-              <li>使用ng-message指令设置可重用的错误提示</li>
+              <li>使用ng-message指令设置可重用的错误提示
+                <ul>
+                  <li>&lt;div ng-message=&quot;required&quot;&gt;此项为必填项&lt;/div&gt;</li>
+                  <li>&lt;div ng-message=&quot;date&quot;&gt;日期格式不正确&lt;/div&gt;</li>
+                  <li>&lt;div ng-message=&quot;fcsaNumber&quot;&gt;数字格式不正确&lt;/div&gt;</li>
+                  <li>&lt;div ng-message=&quot;uiSelectRequired&quot;&gt;请至少选择一项&lt;/div&gt;</li>
+                  <li>&lt;div ng-message=&quot;minlength&quot;&gt;请至少输入10个字符&lt;/div&gt;</li>
+                  <li>&lt;div ng-message=&quot;maxlength&quot;&gt;请至多输入100个字符&lt;/div&gt;</li>
+                </ul>
+              </li>
               <li>自定义验证指令的方法</li>
             </ul>
           </div>
@@ -250,24 +82,123 @@
                 <form name="form1" class="form-horizontal" novalidate>
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="form-group" ng-class="{'has-error':form1.input1.$invalid && !form1.input1.$pristine}">
-                        <label for="input1" class="col-md-2 control-label text-left">input1</label>
+                      <div class="form-group">
+                        <label for="input1" class="col-md-2 control-label text-left">文本</label>
                         <div class="col-md-8">
-                          <input id="input1" name="input1" type="text" ng-model="vm.input1" class="form-control" ng-required="true">
-                          <div class="help-block" ng-messages="form1.input1.$error" ng-show="form1.input1.$dirty">
+                          <input id="input1" name="input1" type="text" ng-model="vm.input1" class="form-control"
+                                 ng-required="true">
+                          <div class="text-danger" ng-messages="form1.input1.$error">
                             <div ng-messages-include="/components/tpls/errorMessages.html"></div>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group" ng-class="{'has-error':form1.input2.$invalid && !form1.input2.$pristine}">
-                        <label for="input2" class="col-md-2 control-label text-left">input2</label>
-                        <div class="col-md-8" >
+                      <div class="form-group">
+                        <label for="input2" class="col-md-2 control-label text-left">选择</label>
+                        <div class="col-md-8">
                           <select id="input2" name="input2" ng-model="vm.input2" class="form-control"
-                                  ng-options="option.id as option.name for option in classifications.class1" ng-required="true" >
+                                  ng-options="option.id as option.name for option in classifications.class1"
+                                  ng-required="true">
                           </select>
-                          <div class="help-block" ng-messages="form1.input2.$error" ng-show="form1.input2.$dirty">
+                          <div class="text-danger" ng-messages="form1.input2.$error">
+                            <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="input3" class="col-md-2 control-label text-left">数字</label>
+                        <div class="col-md-8">
+                          <input type='text' id="input3" name="input3" fcsa-number ng-model='vm.input3' class="form-control" ng-required="true"/>
+                          <div class="text-danger" ng-messages="form1.input3.$error">
+                            <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="input4" class="col-md-2 control-label text-left">日期</label>
+                        <div class="col-md-8">
+                          <p class="input-group">
+                            <input type="text" name="input4" id="input4" class="form-control" datepicker-popup
+                                   ng-model="vm.input4" is-open="datepickerCtrl.input4Opened" ng-required="true"
+                                   ng-disabled="false"/>
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-default"
+                                      ng-click="datepickerCtrl.funOpenInput4($event)"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                          </p>
+                          <div class="text-danger" ng-messages="form1.input4.$error">
+                            <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-2">复选:</label>
+                        <div class="col-md-8">
+                          <label ng-repeat="cls in classifications.class1" class="checkbox-inline">
+                            <input type="checkbox" name="input5" checklist-model="vm.input5" checklist-value="cls.id" ng-required="!(vm.input5 && vm.input5.length > 0)"> {{cls.name}}
+                          </label>
+                          <div class="text-danger" ng-messages="form1.input5.$error">
+                            <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="col-md-2 control-label text-left">单选:</label>
+                        <div class="col-md-8">
+                          <label ng-repeat="cls in classifications.class1" class="radio-inline">
+                            <input name="input6" type="radio" ng-model="vm.input6" ng-value="cls.id" ng-required="true">{{cls.name}}
+                          </label>
+                          <div class="text-danger" ng-messages="form1.input6.$error">
+                            <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-2">多选:</label>
+                        <div class="col-md-8">
+                          <div class="input-group">
+                            <ui-select multiple ui-select-required id="input7" name="input7" ng-model="vm.input7" ng-required="true">
+                              <ui-select-match placeholder="请选择或搜索...">{{$item.name}}</ui-select-match>
+                              <ui-select-choices repeat="item.id as item in classifications.class1 | filter: {name : $select.search}">
+                                {{item.name}}
+                              </ui-select-choices>
+                            </ui-select>
+                            <span class="input-group-btn">
+                              <button ng-click="vm.input7 = null" class="btn btn-default">
+                                <span class="glyphicon glyphicon-trash"></span>
+                              </button>
+                            </span>
+                          </div>
+                          <div class="text-danger" ng-messages="form1.input7.$error">
+                            <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="col-md-2 control-label text-left" for="input8">多行</label>
+                        <div class="col-md-8">
+                          <textarea name="input8" id="input8" ng-model="vm.input8" cols="50" rows="3" ng-minlength="10" ng-maxlength="100" ng-required="true"></textarea>
+                          <div class="text-danger" ng-messages="form1.input8.$error">
                             <div ng-messages-include="/components/tpls/errorMessages.html"></div>
                           </div>
                         </div>
@@ -284,9 +215,154 @@
                         <i class="pull-right fa fa-angle-right"
                            ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
                       </accordion-heading>
-                      <pre class="prettyprint lang-html linenums"></pre>
+                      <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;input1&quot; class=&quot;col-md-2 control-label text-left&quot;&gt;文本&lt;/label&gt;
+        &lt;div class=&quot;col-md-8&quot;&gt;
+          &lt;input id=&quot;input1&quot; name=&quot;input1&quot; type=&quot;text&quot; ng-model=&quot;vm.input1&quot; class=&quot;form-control&quot;
+                 ng-required=&quot;true&quot;&gt;
+          &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.input1.$error&quot;&gt;
+            &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;input2&quot; class=&quot;col-md-2 control-label text-left&quot;&gt;选择&lt;/label&gt;
+        &lt;div class=&quot;col-md-8&quot;&gt;
+          &lt;select id=&quot;input2&quot; name=&quot;input2&quot; ng-model=&quot;vm.input2&quot; class=&quot;form-control&quot;
+                  ng-options=&quot;option.id as option.name for option in classifications.class1&quot;
+                  ng-required=&quot;true&quot;&gt;
+          &lt;/select&gt;
+          &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.input2.$error&quot;&gt;
+            &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;input3&quot; class=&quot;col-md-2 control-label text-left&quot;&gt;数字&lt;/label&gt;
+        &lt;div class=&quot;col-md-8&quot;&gt;
+          &lt;input type=&#39;text&#39; id=&quot;input3&quot; name=&quot;input3&quot; fcsa-number ng-model=&#39;vm.input3&#39; class=&quot;form-control&quot; ng-required=&quot;true&quot;/&gt;
+          &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.input3.$error&quot;&gt;
+            &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;input4&quot; class=&quot;col-md-2 control-label text-left&quot;&gt;日期&lt;/label&gt;
+        &lt;div class=&quot;col-md-8&quot;&gt;
+          &lt;p class=&quot;input-group&quot;&gt;
+            &lt;input type=&quot;text&quot; name=&quot;input4&quot; id=&quot;input4&quot; class=&quot;form-control&quot; datepicker-popup
+                   ng-model=&quot;vm.input4&quot; is-open=&quot;datepickerCtrl.input4Opened&quot; ng-required=&quot;true&quot;
+                   ng-disabled=&quot;false&quot;/&gt;
+            &lt;span class=&quot;input-group-btn&quot;&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;
+                      ng-click=&quot;datepickerCtrl.funOpenInput4($event)&quot;&gt;&lt;i
+                class=&quot;glyphicon glyphicon-calendar&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;/span&gt;
+          &lt;/p&gt;
+          &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.input4.$error&quot;&gt;
+            &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;control-label col-md-2&quot;&gt;复选:&lt;/label&gt;
+        &lt;div class=&quot;col-md-8&quot;&gt;
+          &lt;label ng-repeat=&quot;cls in classifications.class1&quot; class=&quot;checkbox-inline&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; name=&quot;input5&quot; checklist-model=&quot;vm.input5&quot; checklist-value=&quot;cls.id&quot; ng-required=&quot;!(vm.input5 &amp;&amp; vm.input5.length &gt; 0)&quot;&gt; {{cls.name}}
+          &lt;/label&gt;
+          &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.input5.$error&quot;&gt;
+            &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;col-md-2 control-label text-left&quot;&gt;单选:&lt;/label&gt;
+        &lt;div class=&quot;col-md-8&quot;&gt;
+          &lt;label ng-repeat=&quot;cls in classifications.class1&quot; class=&quot;radio-inline&quot;&gt;
+            &lt;input name=&quot;input6&quot; type=&quot;radio&quot; ng-model=&quot;vm.input6&quot; ng-value=&quot;cls.id&quot; ng-required=&quot;true&quot;&gt;{{cls.name}}
+          &lt;/label&gt;
+          &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.input6.$error&quot;&gt;
+            &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;control-label col-md-2&quot;&gt;多选:&lt;/label&gt;
+        &lt;div class=&quot;col-md-8&quot;&gt;
+          &lt;div class=&quot;input-group&quot;&gt;
+            &lt;ui-select multiple ui-select-required id=&quot;input7&quot; name=&quot;input7&quot; ng-model=&quot;vm.input7&quot; ng-required=&quot;true&quot;&gt;
+              &lt;ui-select-match placeholder=&quot;请选择或搜索...&quot;&gt;{{$item.name}}&lt;/ui-select-match&gt;
+              &lt;ui-select-choices repeat=&quot;item.id as item in classifications.class1 | filter: {name : $select.search}&quot;&gt;
+                {{item.name}}
+              &lt;/ui-select-choices&gt;
+            &lt;/ui-select&gt;
+            &lt;span class=&quot;input-group-btn&quot;&gt;
+              &lt;button ng-click=&quot;vm.input7 = null&quot; class=&quot;btn btn-default&quot;&gt;
+                &lt;span class=&quot;glyphicon glyphicon-trash&quot;&gt;&lt;/span&gt;
+              &lt;/button&gt;
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.input7.$error&quot;&gt;
+            &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;col-md-2 control-label text-left&quot; for=&quot;input8&quot;&gt;多行&lt;/label&gt;
+        &lt;div class=&quot;col-md-8&quot;&gt;
+          &lt;textarea name=&quot;input8&quot; id=&quot;input8&quot; ng-model=&quot;vm.input8&quot; cols=&quot;50&quot; rows=&quot;3&quot; ng-minlength=&quot;10&quot; ng-maxlength=&quot;100&quot; ng-required=&quot;true&quot;&gt;&lt;/textarea&gt;
+          &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.input8.$error&quot;&gt;
+            &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
                       <br/>
-                      <pre class="prettyprint lang-js linenums"></pre>
+                      <pre class="prettyprint lang-js linenums">$scope.vm = {}
+$scope.datepickerCtrl = {
+  input4Opened : false,
+  funOpenInput4 : function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.input4Opened = true;
+  }
+}
+
+$scope.classifications = {
+  class1: [
+    {id: 1, name: '选项1', code: 'code1', path: 'a'},
+    {id: 2, name: '选项2', code: 'code2', path: 'b'},
+    {id: 3, name: '选项3', code: 'code3', path: 'c'},
+    {id: 4, name: '选项4', code: 'code4', path: 'd'},
+    {id: 5, name: '选项5', code: 'code5', path: 'e'},
+    {id: 6, name: '选项6', code: 'code6', path: 'f'}
+  ]
+}</pre>
                     </accordion-group>
                   </accordion>
                 </div>

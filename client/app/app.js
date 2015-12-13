@@ -39,6 +39,7 @@ angular.module('epikDesignApp', [
     datepickerPopupConfig.currentText = '今天';
     datepickerPopupConfig.clearText = '清除';
     datepickerPopupConfig.closeText = '关闭';
+    datepickerPopupConfig.datepickerAppendToBody = true;
   })
 
   .run(["$rootScope", "settings", "$state", "i18nService", function ($rootScope, settings, $state, i18nService) {

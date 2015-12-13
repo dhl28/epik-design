@@ -84,7 +84,7 @@
             <div class="code-box">
               <div class="code-box-head">
                 <form name="form1" class="form-horizontal" novalidate>
-                  <div class="form-group" ng-class="{ 'has-error' : form1.date1.$invalid && !form1.date1.$pristine }">
+                  <div class="form-group">
                     <label class="control-label col-md-2" for="date1">date1:</label>
                     <div class="col-md-4">
                       <p class="input-group">
@@ -97,7 +97,7 @@
                               class="glyphicon glyphicon-calendar"></i></button>
                           </span>
                       </p>
-                      <div class="help-block" ng-messages="form1.date1.$error" ng-show="form1.date2.$dirty">
+                      <div class="text-danger" ng-messages="form1.date1.$error">
                         <div ng-messages-include="/components/tpls/errorMessages.html"></div>
                       </div>
                     </div>
@@ -105,7 +105,7 @@
                       <p class="form-control-static">date1 : {{vm.date1}}</p>
                     </div>
                   </div>
-                  <div class="form-group" ng-class="{ 'has-error' : form1.date2.$invalid && !form1.date2.$pristine }">
+                  <div class="form-group">
                     <label class="control-label col-md-2" for="date2">date2:</label>
                     <div class="col-md-4">
                       <p class="input-group">
@@ -118,7 +118,7 @@
                               class="glyphicon glyphicon-calendar"></i></button>
                           </span>
                       </p>
-                      <div class="help-block" ng-messages="form1.date2.$error" ng-show="form1.date2.$dirty">
+                      <div class="text-danger" ng-messages="form1.date2.$error">
                         <div ng-messages-include="/components/tpls/errorMessages.html"></div>
                       </div>
                     </div>
@@ -137,47 +137,47 @@
                            ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
                       </accordion-heading>
                       <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
-&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.date1.$invalid &amp;&amp; !form1.date1.$pristine }&quot;&gt;
-&lt;label class=&quot;control-label col-md-2&quot; for=&quot;date1&quot;&gt;date1:&lt;/label&gt;
-&lt;div class=&quot;col-md-4&quot;&gt;
-&lt;p class=&quot;input-group&quot;&gt;
-  &lt;input type=&quot;text&quot; name=&quot;date1&quot; id=&quot;date1&quot; class=&quot;form-control&quot; datepicker-popup=&quot;yyyy-MM&quot;
-         datepicker-options=&quot;datepickerCtrl.datePickerOptions1&quot; ng-model=&quot;vm.date1&quot;
-         is-open=&quot;datepickerCtrl.date1Opened&quot; ng-required=&quot;true&quot; ng-disabled=&quot;true&quot;/&gt;
-    &lt;span class=&quot;input-group-btn&quot;&gt;
-      &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;
-              ng-click=&quot;datepickerCtrl.funOpenDate1($event)&quot;&gt;&lt;i
-        class=&quot;glyphicon glyphicon-calendar&quot;&gt;&lt;/i&gt;&lt;/button&gt;
-    &lt;/span&gt;
-&lt;/p&gt;
-&lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.date1.$error&quot; ng-show=&quot;form1.date2.$dirty&quot;&gt;
-  &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label class=&quot;control-label col-md-2&quot; for=&quot;date1&quot;&gt;date1:&lt;/label&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;p class=&quot;input-group&quot;&gt;
+      &lt;input type=&quot;text&quot; name=&quot;date1&quot; id=&quot;date1&quot; class=&quot;form-control&quot; datepicker-popup=&quot;yyyy-MM&quot;
+             datepicker-options=&quot;datepickerCtrl.datePickerOptions1&quot; ng-model=&quot;vm.date1&quot;
+             is-open=&quot;datepickerCtrl.date1Opened&quot; ng-required=&quot;true&quot; ng-disabled=&quot;true&quot;/&gt;
+        &lt;span class=&quot;input-group-btn&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;
+                  ng-click=&quot;datepickerCtrl.funOpenDate1($event)&quot;&gt;&lt;i
+            class=&quot;glyphicon glyphicon-calendar&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;/span&gt;
+    &lt;/p&gt;
+    &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.date1.$error&quot;&gt;
+      &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;
+    &lt;p class=&quot;form-control-static&quot;&gt;date1 : {{vm.date1}}&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;col-md-6&quot;&gt;
-&lt;p class=&quot;form-control-static&quot;&gt;date1 : {{vm.date1}}&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.date2.$invalid &amp;&amp; !form1.date2.$pristine }&quot;&gt;
-&lt;label class=&quot;control-label col-md-2&quot; for=&quot;date2&quot;&gt;date2:&lt;/label&gt;
-&lt;div class=&quot;col-md-4&quot;&gt;
-&lt;p class=&quot;input-group&quot;&gt;
-  &lt;input type=&quot;text&quot; name=&quot;date2&quot; id=&quot;date2&quot; class=&quot;form-control&quot; datepicker-popup
-         ng-model=&quot;vm.date2&quot; is-open=&quot;datepickerCtrl.date2Opened&quot; ng-required=&quot;true&quot;
-         ng-disabled=&quot;true&quot;/&gt;
-    &lt;span class=&quot;input-group-btn&quot;&gt;
-      &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;
-              ng-click=&quot;datepickerCtrl.funOpenDate2($event)&quot;&gt;&lt;i
-        class=&quot;glyphicon glyphicon-calendar&quot;&gt;&lt;/i&gt;&lt;/button&gt;
-    &lt;/span&gt;
-&lt;/p&gt;
-&lt;div class=&quot;help-block&quot; ng-messages=&quot;form1.date2.$error&quot; ng-show=&quot;form1.date2.$dirty&quot;&gt;
-  &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;col-md-6&quot;&gt;
-&lt;p class=&quot;form-control-static&quot;&gt;date2 : {{vm.date2}}&lt;/p&gt;
-&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label class=&quot;control-label col-md-2&quot; for=&quot;date2&quot;&gt;date2:&lt;/label&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;p class=&quot;input-group&quot;&gt;
+      &lt;input type=&quot;text&quot; name=&quot;date2&quot; id=&quot;date2&quot; class=&quot;form-control&quot; datepicker-popup
+             ng-model=&quot;vm.date2&quot; is-open=&quot;datepickerCtrl.date2Opened&quot; ng-required=&quot;true&quot;
+             ng-disabled=&quot;true&quot;/&gt;
+        &lt;span class=&quot;input-group-btn&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;
+                  ng-click=&quot;datepickerCtrl.funOpenDate2($event)&quot;&gt;&lt;i
+            class=&quot;glyphicon glyphicon-calendar&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;/span&gt;
+    &lt;/p&gt;
+    &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.date2.$error&quot;&gt;
+      &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;
+    &lt;p class=&quot;form-control-static&quot;&gt;date2 : {{vm.date2}}&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 &lt;/form&gt;</pre>
                       <br/>

@@ -6,6 +6,8 @@ angular.module('epikDesignApp').directive('uiSelectRequired', function () {
     require: 'ngModel',
     link: function (scope, elm, attrs, ctrl) {
       ctrl.$validators.uiSelectRequired = function (modelValue, viewValue) {
+        if (!ctrl)
+          return;
 
         var determineVal;
         if (angular.isArray(modelValue)) {

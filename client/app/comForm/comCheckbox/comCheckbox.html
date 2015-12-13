@@ -66,29 +66,33 @@
                   <li>1 从数据字典读取选择项，通过checklist-model绑定值</li>
                   <li>2 绑定到不同的modal</li>
                 </ul>
-                <form class="form-horizontal" novalidate>
-                  <div class="form-group" ng-class="{ 'has-error' : form1.checkbox1.$invalid && !form1.checkbox1.$pristine }">
+                <form name="form1" class="form-horizontal" novalidate>
+                  <div class="form-group">
                     <label class="control-label col-md-2">checkbox1:</label>
                     <div class="col-md-4">
                       <label ng-repeat="cls in classifications.classOne" class="checkbox-inline">
-                        <input type="checkbox" checklist-model="vm.classOnePick" checklist-value="cls.value" ng-required="!(vm.classOnePick && vm.classOnePick.length > 0)"> {{cls.name}}
+                        <input type="checkbox" name="checkbox1" checklist-model="vm.classOnePick" checklist-value="cls.value" ng-required="!(vm.classOnePick && vm.classOnePick.length > 0)"> {{cls.name}}
                       </label>
-                      <p ng-show="form1.checkbox1.$invalid && !form1.checkbox1.$pristine" class="help-block">输入格式不正确</p>
+                      <div class="text-danger" ng-messages="form1.checkbox1.$error">
+                        <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                      </div>
                     </div>
                     <div class="col-md-6">
                       <p class="form-control-static">vm.classOnePick: {{vm.classOnePick}}</p>
                     </div>
                   </div>
-                  <div class="form-group" ng-class="{ 'has-error' : form1.checkbox2.$invalid && !form1.checkbox2.$pristine }">
+                  <div class="form-group">
                     <label class="control-label col-md-2">checkbox2:</label>
                     <div class="col-md-4">
                       <label class="checkbox-inline">
-                        <input type="checkbox" name="checkbox2" ng-model="vm.classTwoPick.value1" ng-true-value="1" ng-false-value="0" ng-required="true"> 选项一
+                        <input type="checkbox" name="checkbox2" ng-model="vm.classTwoPick.value1" ng-true-value="1" ng-false-value="0" ng-required="!(vm.classTwoPick.value1 || vm.classTwoPick.value2)"> 选项一
                       </label>
                       <label class="checkbox-inline">
-                        <input type="checkbox" name="checkbox2" ng-model="vm.classTwoPick.value2" ng-true-value="true" ng-false-value="false" ng-required="true"> 选项二
+                        <input type="checkbox" name="checkbox3" ng-model="vm.classTwoPick.value2" ng-true-value="true" ng-false-value="false" ng-required="!(vm.classTwoPick.value1 || vm.classTwoPick.value2)"> 选项二
                       </label>
-                      <p ng-show="form1.checkbox2.$invalid && !form1.checkbox2.$pristine" class="help-block">输入格式不正确</p>
+                      <div class="text-danger" ng-messages="form1.checkbox2.$error || form1.checkbox3.$error">
+                        <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                      </div>
                     </div>
                     <div class="col-md-6">
                       <p class="form-control-static">vm.classTwoPick.value1: {{vm.classTwoPick.value1}}</p>
@@ -105,36 +109,40 @@
                         <i class="pull-right fa fa-angle-right"
                            ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
                       </accordion-heading>
-                      <pre class="prettyprint lang-html linenums">&lt;form class=&quot;form-horizontal&quot; novalidate&gt;
-    &lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.checkbox1.$invalid &amp;&amp; !form1.checkbox1.$pristine }&quot;&gt;
-      &lt;label class=&quot;control-label col-md-2&quot;&gt;checkbox1:&lt;/label&gt;
-      &lt;div class=&quot;col-md-4&quot;&gt;
-        &lt;label ng-repeat=&quot;cls in classifications.classOne&quot; class=&quot;checkbox-inline&quot;&gt;
-          &lt;input type=&quot;checkbox&quot; checklist-model=&quot;vm.classOnePick&quot; checklist-value=&quot;cls.value&quot; ng-required=&quot;!(vm.classOnePick &amp;&amp; vm.classOnePick.length &gt; 0)&quot;&gt; {{cls.name}}
-        &lt;/label&gt;
-        &lt;p ng-show=&quot;form1.checkbox1.$invalid &amp;&amp; !form1.checkbox1.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;col-md-6&quot;&gt;
-        &lt;p class=&quot;form-control-static&quot;&gt;vm.classOnePick: {{vm.classOnePick}}&lt;/p&gt;
-      &lt;/div&gt;
+                      <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label class=&quot;control-label col-md-2&quot;&gt;checkbox1:&lt;/label&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;label ng-repeat=&quot;cls in classifications.classOne&quot; class=&quot;checkbox-inline&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;checkbox1&quot; checklist-model=&quot;vm.classOnePick&quot; checklist-value=&quot;cls.value&quot; ng-required=&quot;!(vm.classOnePick &amp;&amp; vm.classOnePick.length &gt; 0)&quot;&gt; {{cls.name}}
+    &lt;/label&gt;
+    &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.checkbox1.$error&quot;&gt;
+      &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot; ng-class=&quot;{ &#39;has-error&#39; : form1.checkbox2.$invalid &amp;&amp; !form1.checkbox2.$pristine }&quot;&gt;
-      &lt;label class=&quot;control-label col-md-2&quot;&gt;checkbox2:&lt;/label&gt;
-      &lt;div class=&quot;col-md-4&quot;&gt;
-        &lt;label class=&quot;checkbox-inline&quot;&gt;
-          &lt;input type=&quot;checkbox&quot; name=&quot;checkbox2&quot; ng-model=&quot;vm.classTwoPick.value1&quot; ng-true-value=&quot;1&quot; ng-false-value=&quot;0&quot; ng-required=&quot;true&quot;&gt; 选项一
-        &lt;/label&gt;
-        &lt;label class=&quot;checkbox-inline&quot;&gt;
-          &lt;input type=&quot;checkbox&quot; name=&quot;checkbox2&quot; ng-model=&quot;vm.classTwoPick.value2&quot; ng-true-value=&quot;true&quot; ng-false-value=&quot;false&quot; ng-required=&quot;true&quot;&gt; 选项二
-        &lt;/label&gt;
-        &lt;p ng-show=&quot;form1.checkbox2.$invalid &amp;&amp; !form1.checkbox2.$pristine&quot; class=&quot;help-block&quot;&gt;输入格式不正确&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;col-md-6&quot;&gt;
-        &lt;p class=&quot;form-control-static&quot;&gt;vm.classTwoPick.value1: {{vm.classTwoPick.value1}}&lt;/p&gt;
-        &lt;p class=&quot;form-control-static&quot;&gt;vm.classTwoPick.value2: {{vm.classTwoPick.value2}}&lt;/p&gt;
-      &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;
+    &lt;p class=&quot;form-control-static&quot;&gt;vm.classOnePick: {{vm.classOnePick}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label class=&quot;control-label col-md-2&quot;&gt;checkbox2:&lt;/label&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;label class=&quot;checkbox-inline&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;checkbox2&quot; ng-model=&quot;vm.classTwoPick.value1&quot; ng-true-value=&quot;1&quot; ng-false-value=&quot;0&quot; ng-required=&quot;!(vm.classTwoPick.value1 || vm.classTwoPick.value2)&quot;&gt; 选项一
+    &lt;/label&gt;
+    &lt;label class=&quot;checkbox-inline&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;checkbox3&quot; ng-model=&quot;vm.classTwoPick.value2&quot; ng-true-value=&quot;true&quot; ng-false-value=&quot;false&quot; ng-required=&quot;!(vm.classTwoPick.value1 || vm.classTwoPick.value2)&quot;&gt; 选项二
+    &lt;/label&gt;
+    &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.checkbox2.$error || form1.checkbox3.$error&quot;&gt;
+      &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
-  &lt;/form&gt;</pre>
+  &lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;
+    &lt;p class=&quot;form-control-static&quot;&gt;vm.classTwoPick.value1: {{vm.classTwoPick.value1}}&lt;/p&gt;
+    &lt;p class=&quot;form-control-static&quot;&gt;vm.classTwoPick.value2: {{vm.classTwoPick.value2}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/form&gt;</pre>
                       <br/>
                       <pre class="prettyprint lang-js linenums">
 angular.module('epikDesignApp')
