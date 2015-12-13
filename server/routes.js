@@ -8,8 +8,7 @@ var errors = require('./components/errors');
 var errorHandler = require('errorhandler');
 
 module.exports = function(app) {
-
-  // Insert routes below
+  app.use('/api/accessories', require('./api/accessories'));
   app.use('/api/customers', require('./api/customer'));
 
   // All undefined asset or api routes should return a 404

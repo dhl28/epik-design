@@ -134,3 +134,7 @@ pre.prettyprint.linenums ol li {
 .form-horizontal .checkbox > label {
   padding-left: 20px;
 }
+
+.page-header.navbar.navbar-fixed-top {
+  z-index: 1000;
+}

@@ -14,9 +14,10 @@ angular.module('epikDesignApp', [
   'ui.grid.pagination',
   'ui.grid.selection',
   'fcsa-number',
-  'ui.select'
+  'ui.select',
+  'angularFileUpload'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, fcsaNumberConfigProvider, uiSelectConfig, datepickerConfig, datepickerPopupConfig) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, fcsaNumberConfigProvider, uiSelectConfig, datepickerConfig, datepickerPopupConfig, $modalProvider) {
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
 
@@ -40,6 +41,9 @@ angular.module('epikDesignApp', [
     datepickerPopupConfig.clearText = '清除';
     datepickerPopupConfig.closeText = '关闭';
     datepickerPopupConfig.datepickerAppendToBody = true;
+
+    $modalProvider.options.animation = false;
+    $modalProvider.options.backdrop = false;
   })
 
   .run(["$rootScope", "settings", "$state", "i18nService", function ($rootScope, settings, $state, i18nService) {

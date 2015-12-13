@@ -1,0 +1,82 @@
+<div class="modal-header">
+  <h3 class="modal-title">文件上传</h3>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-3">
+      <input type="file" nv-file-select uploader="uploader" multiple=""><br>
+    </div>
+    <div class="col-md-9">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th width="15%">文件名</th>
+          <th width="10%" ng-show="uploader.isHTML5">大小</th>
+          <th width="50%" ng-show="uploader.isHTML5">进度</th>
+          <th width="10%">状态</th>
+          <th width="15%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in uploader.queue">
+          <td><strong>{{ item.file.name }}</strong></td>
+          <td nowrap="" ng-show="uploader.isHTML5">{{ item.file.size/1024/1024|number:2 }} MB</td>
+          <td ng-show="uploader.isHTML5">
+            <div style="margin-bottom: 0; " class="progress">
+              <div ng-style="{ 'width': item.progress + '%' }" role="progressbar" class="progress-bar"></div>
+            </div>
+          </td>
+          <td class="text-center">
+            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+          </td>
+          <td nowrap="">
+            <button ng-disabled="item.isReady || item.isUploading || item.isSuccess" ng-click="uploadItem(item)"
+                    class="btn btn-success btn-xs" type="button">上传
+            </button>
+            <button ng-disabled="!item.isUploading" ng-click="cancelItem(item)" class="btn btn-warning btn-xs"
+                    type="button">取消
+            </button>
+            <button ng-click="removeItem(item)" class="btn btn-danger btn-xs" type="button">移除
+            </button>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td class="text-left;">
+            个数: {{ uploader.queue.length }}
+          </td>
+          <td class="text-right;">
+            进度：
+          </td>
+          <td colspan="3">
+            <div style="" class="progress">
+              <div ng-style="{ 'width': uploader.progress + '%' }" role="progressbar" class="progress-bar"></div>
+            </div>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <alert class="alert alert-danger" role="alert" ng-show="uploadErrMsg"> {{uploadErrMsg }}</alert>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button ng-disabled="!uploader.getNotUploadedItems().length" ng-click="uploader.uploadAll()" type="button"
+          class="btn btn-info">
+    上传全部
+  </button>
+  <button ng-disabled="!uploader.isUploading" ng-click="uploader.cancelAll()" type="button" class="btn btn-info">
+    取消
+  </button>
+  <button ng-disabled="!uploader.queue.length" ng-click="uploader.clearQueue()" type="button" class="btn btn-info">
+    移除全部
+  </button>
+  <button class="btn cancelBtn" ng-click="cancel();" class="btn btn-info">关闭</button>
+</div>

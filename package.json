@@ -18,7 +18,13 @@
     "method-override": "~1.0.0",
     "morgan": "~1.0.0",
     "request-promise": "^1.0.2",
-    "serve-favicon": "~2.0.1"
+    "serve-favicon": "~2.0.1",
+    "ws.js": "0.0.21",
+    "xpath": "0.0.9",
+    "multer": "^1.0.3",
+    "archiver": "^0.16.0",
+    "q": "^1.4.1",
+    "xmldom": "^0.1.19"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

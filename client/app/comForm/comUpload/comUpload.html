@@ -1,0 +1,151 @@
+<div class="page-head">
+  <!-- BEGIN PAGE TITLE -->
+  <div class="page-title">
+    <h1>upload&download 上传下载
+      <small></small>
+    </h1>
+  </div>
+  <!-- END PAGE TITLE -->
+</div>
+<!-- END PAGE HEAD -->
+<div class="breadcrumb-wrap">
+  <span ncy-breadcrumb-text ncy-breadcrumb-text-separator=" > "></span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">概述</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>文件上传使用angularFileUpload3方控件，<a ng-href="https://github.com/nervgh/angular-file-upload"
+                                                 target="_blank">https://github.com/nervgh/angular-file-upload</a></li>
+              <li>对angularFileUpload作了2次封装，提供epik-uploader-modal, epik-downloader, epik-downloader-modal指令</li>
+              <li>
+                指令
+                <ul>
+                  <li>epik-uploader-modal：文件上传弹出框(弹出)
+                    <ul>用法
+                      <li>&lt;epik-uploader-modal file-list=&quot;fileList&quot; enforce-length=&quot;4&quot;
+                        enforce-max-file-size=&quot;4*1024*1024&quot; enforce-type=&quot;&#39;(png|jpeg|jpg|gif)&#39;&quot;&gt;&lt;/epik-uploader-modal&gt;</li>
+                      <li>file-list: 上传文件成功后返回的数组, format: [{documentId: "026E672E-EA77-4FC2-9EBC-A81C0A6EA8E8"
+                        filename: "Hydrangeas.jpg"},...]
+                      </li>
+                      <li>enforce-length: 上传文件个数</li>
+                      <li>enforce-max-file-size: 单个文件大小限制</li>
+                      <li>enforce-type: 文件类型限制</li>
+                    </ul>
+                  </li>
+                  <li>epik-downloader: 文件下载列表(嵌入)
+                    <ul>用法
+                      <li>&lt;epik-downloader file-list=&quot;fileList&quot;&gt;&lt;/epik-downloader&gt;</li>
+                      <li>file-list: 下载文件对应数组, format: [{documentId: "026E672E-EA77-4FC2-9EBC-A81C0A6EA8E8"
+                        filename: "Hydrangeas.jpg"},...]
+                      </li>
+                    </ul>
+                  </li>
+                  <li>epik-downloader-modal: 文件下载列表框(弹出)
+                    <ul>
+                      <li>&lt;epik-downloader-modal
+                        file-list=&quot;fileList&quot;&gt;&lt;/epik-downloader-modal&gt;</li>
+                      <li>file-list: 下载文件对应数组, format: [{documentId: "026E672E-EA77-4FC2-9EBC-A81C0A6EA8E8"
+                        filename: "Hydrangeas.jpg"},...]
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">实例</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                <form name="form1" class="form-horizontal" novalidate>
+                  <div class="form-group">
+                    <label class="control-label col-md-2">上传文件:</label>
+                    <div class="col-md-4">
+                      <epik-uploader-modal file-list="fileList" enforce-length="4"
+                                           enforce-max-file-size="4*1024*1024"
+                                           enforce-type="'(png|jpeg|jpg|gif)'"></epik-uploader-modal>
+                      <epik-downloader-modal file-list="fileList"></epik-downloader-modal>
+                    </div>
+                    <div class="col-md-6">
+                      <epik-downloader file-list="fileList"></epik-downloader>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>代码
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label class=&quot;control-label col-md-2&quot;&gt;上传文件:&lt;/label&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;epik-uploader-modal file-list=&quot;fileList&quot; enforce-length=&quot;4&quot;
+                         enforce-max-file-size=&quot;4*1024*1024&quot;
+                         enforce-type=&quot;&#39;(png|jpeg|jpg|gif)&#39;&quot;&gt;&lt;/epik-uploader-modal&gt;
+    &lt;epik-downloader-modal file-list=&quot;fileList&quot;&gt;&lt;/epik-downloader-modal&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;
+    &lt;epik-downloader file-list=&quot;fileList&quot;&gt;&lt;/epik-downloader&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/form&gt;</pre>
+                      <br/>
+                      <pre class="prettyprint lang-js linenums">$scope.fileList = [];</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>

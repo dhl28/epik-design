@@ -58,7 +58,13 @@ angular.module('epikDesignApp')
         ncyBreadcrumb: {
           label: 'formvalidate 表单验证'
         }
+      })
+      .state('main.component.widget.form.upload', {
+        url: '/upload',
+        templateUrl: 'app/comForm/comUpload/comUpload.html',
+        controller: 'ComUploadCtrl',
+        ncyBreadcrumb: {
+          label: 'upload&download 上传下载'
+        }
       });
-
-
   });
