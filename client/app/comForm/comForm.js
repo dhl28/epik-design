@@ -66,5 +66,13 @@ angular.module('epikDesignApp')
         ncyBreadcrumb: {
           label: 'upload&download 上传下载'
         }
+      })
+      .state('main.component.widget.form.epikpicker', {
+        url: '/epikpicker',
+        templateUrl: 'app/comForm/comEpikPicker/comEpikPicker.html',
+        controller: 'ComEpikPickerCtrl',
+        ncyBreadcrumb: {
+          label: 'epik-picker 业务选择器'
+        }
       });
   });

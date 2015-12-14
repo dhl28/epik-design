@@ -66,7 +66,7 @@ angular.module('epikDesignApp')
     };
 
     function getPage() {
-      apiService.getCustomers(pagination2Options).then(function(data) {
+      apiService.getPagedCustomers(pagination2Options).then(function(data) {
         $scope.grid2Options.totalItems = data.recordCount;
         $scope.grid2Options.data = data.resultList;
       });

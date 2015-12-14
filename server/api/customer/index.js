@@ -5,6 +5,24 @@ var express = require('express'),
   apiHandler = require('../../components/epik-api-handler'),
   router = express.Router();
 
+router.get('/customer/:id', function(req, res, next) {
+  var id = req.params.id;
+  controller.getCustomer(id).then(function (body) {
+    var result = apiHandler(body);
+    if ('error' in result) {
+      next(result.error);
+    } else {
+      res.json(result.data);
+    }
+  }).catch(function (err) {
+    next({
+      code: -3,
+      name: "请求应用服务器异常",
+      message: err.message
+    });
+  });
+});
+
 router.get('/paged-customers', function (req, res, next) {
   var pageNumber = req.query.pageNumber,
     pageSize = req.query.pageSize,
@@ -27,4 +45,21 @@ router.get('/paged-customers', function (req, res, next) {
   });
 });
 
+router.get('/', function (req, res, next) {
+  var query = req.query;
+  controller.getCustomers(query).then(function (body) {
+    var result = apiHandler(body);
+    if ('error' in result) {
+      next(result.error);
+    } else {
+      res.json(result.data);
+    }
+  }).catch(function (err) {
+    next({
+      code: -3,
+      name: "请求应用服务器异常",
+      message: err.message
+    });
+  });
+});
 module.exports = router;

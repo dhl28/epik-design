@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h3 class="modal-title">选择客户</h3>
+</div>
+<div class="modal-body">
+  <form name="form1" novalidate class="form-horizontal">
+  <div class="row">
+    <div class="col-md-8">
+
+        <div class="form-group">
+          <label for="keyword" class="col-md-3 control-label text-left">关键字：</label>
+
+          <div class="col-md-7">
+            <input id="keyword" name="keyword" ng-model="query.keyword"
+                   ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 700, 'blur': 0 } }"
+                   type="text" class="form-control">
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label class="col-md-12 control-label text-left">已选：</label>
+      </div>
+    </div>
+  </div>
+  </form>
+  <div class="row">
+    <div class="col-md-8">
+      <div id="grid1" ui-grid-pagination ui-grid-selection ui-grid="gridOptions"></div>
+    </div>
+    <div class="col-md-4">
+      <div id="resultTable" class="scroller" data-height="300px">
+        <table class="table table-striped table-condensed">
+          <tbody>
+          <tr ng-repeat="row in result">
+            <td>{{row["customerNo"] }}</td>
+            <td>{{row["name"] }}</td>
+            <td><a ng-click="fnRemoveResult(row['id']);"><span class="glyphicon glyphicon-remove"></span></a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-info" ng-click="fnCloseModal($event);">关闭</button>
+</div>

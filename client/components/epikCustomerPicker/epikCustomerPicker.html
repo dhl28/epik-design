@@ -1,0 +1,14 @@
+<div class="input-group">
+  <ui-select multiple id="select2" name="select2" ng-model="vm.result" ng-required="true"
+             ng-disabled="disabled">
+    <ui-select-match placeholder="请选择或搜索...">{{$item.name}}</ui-select-match>
+    <ui-select-choices refresh="refresh($select.search)" refresh-delay="1000" repeat="item in data.datas">
+      {{item.name}}
+    </ui-select-choices>
+  </ui-select>
+  <span class="input-group-btn">
+    <button ng-click="fnOpenSelectModal();" class="btn btn-default">
+      <span class="glyphicon glyphicon-plus"></span>
+    </button>
+  </span>
+</div>

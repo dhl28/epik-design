@@ -16,3 +16,19 @@ exports.getPagedCustomers = function (pageNumber, pageSize, sort, order) {
     json: true
   });
 }
+
+exports.getCustomers = function(query) {
+  return epikRP.get({
+    uri: 'http://172.30.0.161:9200/gbp/customer/v1/optioncustomer/list',
+    qs: query,
+    json: true
+  });
+}
+
+exports.getCustomer = function(id) {
+  return epikRP.get({
+    uri: 'http://172.30.0.161:9200/gbp/customer/v1/basic/detail',
+    qs: {id: id},
+    json: true
+  });
+}

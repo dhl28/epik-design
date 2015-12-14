@@ -1,0 +1,123 @@
+<div class="page-head">
+  <!-- BEGIN PAGE TITLE -->
+  <div class="page-title">
+    <h1>epik-picker 业务选择器
+      <small></small>
+    </h1>
+  </div>
+  <!-- END PAGE TITLE -->
+</div>
+<!-- END PAGE HEAD -->
+<div class="breadcrumb-wrap">
+  <span ncy-breadcrumb-text ncy-breadcrumb-text-separator=" > "></span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">概述</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>epik-picker用于选择业务相关的数据</li>
+              <li>有以下几种形式的选择器
+                <ul>
+                  <li>epik-customer-picker: 选择客户</li>
+                  <li>epik-industry-picker: 选择行业</li>
+                  <li>epik-user-picker: 选择员工</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings"></i>
+          <span class="caption-subject bold uppercase">实例</span>
+          <span class="caption-helper"></span>
+        </div>
+        <div class="tools">
+          <a href="" class="collapse">
+          </a>
+          <a href="" class="fullscreen">
+          </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="code-box">
+              <div class="code-box-head">
+                epik-customer-picker参数
+                <ul>
+                  <li>ng-modal,要绑定的字段，数组</li>
+                  <li>required,是否必填</li>
+                </ul>
+                <form name="form1" class="form-horizontal" novalidate>
+                  <div class="form-group">
+                    <label class="control-label col-md-2">选择客户</label>
+                    <div class="col-md-4">
+                      <epik-customer-picker name="customer" ng-model="vm.customers" required></epik-customer-picker>
+                      <div class="text-danger" ng-messages="form1.customer.$error || form1.customer.$error">
+                        <div ng-messages-include="/components/tpls/errorMessages.html"></div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="code-box-body">
+                <div class="code-box-code">
+                  <accordion>
+                    <accordion-group is-open="true">
+                      <accordion-heading>代码
+                        <i class="pull-right fa fa-angle-right"
+                           ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                      </accordion-heading>
+                      <pre class="prettyprint lang-html linenums">&lt;form name=&quot;form1&quot; class=&quot;form-horizontal&quot; novalidate&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;control-label col-md-2&quot;&gt;选择客户&lt;/label&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;epik-customer-picker name=&quot;customer&quot; ng-model=&quot;vm.customers&quot; required&gt;&lt;/epik-customer-picker&gt;
+      &lt;div class=&quot;text-danger&quot; ng-messages=&quot;form1.customer.$error || form1.customer.$error&quot;&gt;
+        &lt;div ng-messages-include=&quot;/components/tpls/errorMessages.html&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
+                      <br/>
+                      <pre class="prettyprint lang-js linenums">$scope.vm = {
+  customers : ['85B83978-E2BD-446F-94C4-B2DC7C8AEAB8', '5479CD69-D7CE-46B1-8EFB-A47E4F1E8690']
+}</pre>
+                    </accordion-group>
+                  </accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  prettyPrint();
+</script>
